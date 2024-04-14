@@ -12,29 +12,61 @@ namespace Cyborg.Player
         {
             _inventory = GetComponent<Inventory>();
             _equipment = GetComponent<Equipment>();
+            ObserveInput();
         }
 
-        private void Update()
+        private void OnDestroy()
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                _equipment.Weapon.Shoot();
-            }
+            StopObserveInput();
+        }
+        private void ObserveInput()
+        {
+            InputGameplay.Instance.E_LeftClick = LeftClick;
+            InputGameplay.Instance.E_LeftClickCancel = LeftClickCancel;
+            InputGameplay.Instance.E_Reload = Reload;
+            InputGameplay.Instance.E_Interact = Interact;
+            InputGameplay.Instance.E_Inventory = Inventory;
         }
 
-        public void OnShoot(InputAction.CallbackContext ctx)
+        private void StopObserveInput()
         {
+            if (InputGameplay.Instance.E_LeftClick == LeftClick)
+                InputGameplay.Instance.E_LeftClick = null;
+            if (InputGameplay.Instance.E_LeftClickCancel == LeftClickCancel)
+                InputGameplay.Instance.E_LeftClickCancel = null;
+            if (InputGameplay.Instance.E_Reload == Reload)
+                InputGameplay.Instance.E_Reload = null;
+            if (InputGameplay.Instance.E_Interact == Interact)
+                InputGameplay.Instance.E_Interact = null;
+            if (InputGameplay.Instance.E_Inventory == Inventory)
+                InputGameplay.Instance.E_Inventory = null;
+        }
+
+        private void LeftClick()
+        {
+            print("leftclick");
             _equipment.Weapon.Shoot();
         }
 
-        public void OnReload(InputAction.CallbackContext ctx)
+        private void LeftClickCancel()
         {
-
+            print("leftclickcancel");
+        }
+        
+        private void Reload()
+        {
+            print("r");
         }
 
-        public void OnInteract(InputAction.CallbackContext ctx)
+        private void Interact()
         {
+            print("e");
+        }
 
+        private void Inventory()
+        {
+            print("openInventory");
+            InputModManager.Instance.UIMod();
         }
     }
 }
