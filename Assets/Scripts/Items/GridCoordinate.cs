@@ -11,5 +11,15 @@ namespace Cyborg.Items
 
         public int x;
         public int y;
+
+        public static bool operator ==(GridCoordinate a, GridCoordinate b)
+        {
+            return a.x == b.x && a.y == b.y;
+        }
+
+        public static bool operator !=(GridCoordinate a, GridCoordinate b)
+        {
+            return !(a == b);
+        }
     }
 }

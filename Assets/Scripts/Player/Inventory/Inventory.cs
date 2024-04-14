@@ -1,6 +1,7 @@
 using Cyborg.Items;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ namespace Cyborg.Player
 {
     public class Inventory : MonoBehaviour
     {
-        private List<InventoryItem> _items = new();
+        private List<Item> _items = new();
         private List<InventorySlot> _highlightedSlots;
         private InventorySlot[,] _grid = new InventorySlot[4, 3]; //TODO: get from player stats
         private GridLayoutGroup _gridGroup;
@@ -51,6 +52,15 @@ namespace Cyborg.Player
             }
 
             return true;
+        }
+
+        public void ToggleItemRaycasts()
+        {
+            foreach (var item in _items)
+            {
+                var image = item.GetComponent<Image>();
+                image.raycastTarget = !image.raycastTarget;
+            }
         }
 
         public void Unhiglight()
@@ -96,21 +106,45 @@ namespace Cyborg.Player
             return slots;
         }
 
-        public bool TryAddItem(Item item, GridCoordinate position)
+        public bool TryMoveItem(Item item, GridCoordinate newPosition)
         {
+            if (!VerifySpaceEmpty(newPosition, item.Size))
+            {
+                item.GetComponent<TestDroppableItem>().ResetPosition();
+                return false;
+            }
 
-            if (!VerifySpaceEmpty(position, item.Size)) return false;
+            item.InventoryPosition = newPosition;
+            foreach (var slot in _grid)
+            {
+                if (slot.Item != null && slot.Item.Id == item.Id)
+                {
+                    slot.Clear();
+                }
+            }
 
-            item.PlaceInInventory();
-            var invetoryItem = new InventoryItem(item.Data);
-            item.IdInInvetory = invetoryItem.Id;
-            _items.Add(invetoryItem);
-            FillGrid(invetoryItem, position, item.Size);
+            FillGrid(item, newPosition, item.Size);
 
             return true;
         }
 
-        private void FillGrid(InventoryItem item, GridCoordinate position, GridCoordinate size)
+        public bool TryAddItem(Item item, GridCoordinate position)
+        {
+            if (!VerifySpaceEmpty(position, item.Size)) return false;
+
+            item.PlaceInInventory();
+            _items.Add(item);
+            FillGrid(item, position, item.Size);
+
+            return true;
+        }
+
+        public GridCoordinate GetItemPosition(Guid id)
+        {
+            return _items.Where(item => item.Id == id).Select(item => item.InventoryPosition).First();
+        }
+
+        private void FillGrid(Item item, GridCoordinate position, GridCoordinate size)
         {
             for (int x = position.x; x < position.x + size.x; x++)
             {
@@ -137,7 +171,7 @@ namespace Cyborg.Player
             _tempIdToClear = id;
             foreach (var slot in _grid)
             {
-                if (slot.ItemData.Id == id)
+                if (!slot.Empty && slot.Item.Id == id)
                 {
                     slot.Clear();
                 }

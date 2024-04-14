@@ -14,12 +14,20 @@ namespace Cyborg.Player
         private Image _background;
         private Inventory _inventory;
         private GridCoordinate _position;
-        private InventoryItem _item;
+        private Item _item;
+        private Item _itemToClear;
         private Guid _idToClear;
         private Color _originalColor;
+        private Guid _itemIdInSlot;
 
-        public bool Empty => _item.Id == default;
-        public InventoryItem ItemData => _item;
+        public bool Empty
+        {
+            get
+            {
+                return _item == null || _itemIdInSlot == default;
+            }
+        }
+        public Item Item => _item;
         public Guid IdToClear => _idToClear;
 
         private void Awake()
@@ -34,20 +42,25 @@ namespace Cyborg.Player
             _position = position;
         }
 
-        public void PlaceItem(InventoryItem item)
+        public void PlaceItem(Item item)
         {
             _item = item;
+            _itemIdInSlot = item.Id;
         }
 
         public void Clear()
         {
             _idToClear = _item.Id;
-            _item.Id = default;
+            _itemToClear = _item;
+            _item = null;
+            _itemIdInSlot = default;
         }
 
         public void Unclear()
         {
-            _item.Id = _idToClear;
+            _itemIdInSlot = _idToClear;
+            _item = _itemToClear;
+            _itemToClear = null;
             _idToClear = default;
         }
 
@@ -66,13 +79,26 @@ namespace Cyborg.Player
             if (eventData.pointerDrag.TryGetComponent(out TestDroppableItem item))
             {
                 _inventory.Unhiglight();
-                if (_inventory.TryAddItem(item.Item, _position))
+
+                if (item.Item.InInventory && _inventory.TryMoveItem(item.Item, _position))
                 {
+                    Debug.Log("Item moved.");
                     item.transform.SetParent(transform);
                     item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                     item.transform.SetParent(_inventory.transform, true);
                     return;
                 }
+
+                if (_inventory.TryAddItem(item.Item, _position))
+                {
+                    Debug.Log("Item placed in inventory slot.");
+                    item.transform.SetParent(transform);
+                    item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                    item.transform.SetParent(_inventory.transform, true);
+                    return;
+                }
+
+                Debug.Log("Item could not be placed in inventory slot.");
                 item.ResetPosition();
                 return;
             }
@@ -89,6 +115,11 @@ namespace Cyborg.Player
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (!Empty)
+            {
+                Debug.Log("Slot is not empty.");
+            }
+
             if (eventData.pointerDrag != null && eventData.pointerDrag.TryGetComponent(out TestDroppableItem item) && Empty)
             {
                 _inventory.Highlight(_position, item.Item.Size);

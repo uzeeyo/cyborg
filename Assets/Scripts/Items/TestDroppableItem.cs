@@ -23,15 +23,17 @@ namespace Cyborg.Items
             Item = GetComponent<Item>();
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
+        public void OnBeginDrag(PointerEventData _)
         {
-            _image.raycastTarget = false;
             _originalPosition = _rectTransform.anchoredPosition;
             _listenForRotateCoroutine = StartCoroutine(ListenForRotate());
+            var inventory = FindObjectOfType<Inventory>();
+            inventory.ToggleItemRaycasts();
+            _image.raycastTarget = false;
 
             if (Item.InInventory)
             {
-                FindObjectOfType<Inventory>().TempRemoveItem(Item.IdInInvetory);
+                inventory.TempRemoveItem(Item.Id);
             }
         }
 
@@ -40,10 +42,11 @@ namespace Cyborg.Items
             _rectTransform.anchoredPosition += eventData.delta;
         }
 
-        public void OnEndDrag(PointerEventData eventData)
+        public void OnEndDrag(PointerEventData _)
         {
-            _image.raycastTarget = true;
             StopCoroutine(_listenForRotateCoroutine);
+            FindObjectOfType<Inventory>().ToggleItemRaycasts();
+            _image.raycastTarget = true;
         }
 
         private IEnumerator ListenForRotate()
