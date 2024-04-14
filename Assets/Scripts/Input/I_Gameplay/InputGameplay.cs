@@ -47,6 +47,16 @@ public class InputGameplay : Inputs.IGamePlayActions
 
     public Action E_SprintCancel;
 
+    public Action E_LeftClick;
+
+    public Action E_LeftClickCancel;
+
+    public Action E_Interact;
+
+    public Action E_Reload;
+
+    public Action E_Inventory;
+
     public Action E_GoMenu;
 
     #endregion
@@ -65,9 +75,34 @@ public class InputGameplay : Inputs.IGamePlayActions
             E_SprintCancel?.Invoke();
     }
 
+    void Inputs.IGamePlayActions.OnLeftClickMouse(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            E_LeftClick?.Invoke();
+
+        if (context.phase == InputActionPhase.Canceled)
+            E_LeftClickCancel?.Invoke();
+    }
     void Inputs.IGamePlayActions.OnGoMenu(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
             E_GoMenu?.Invoke();
     }
+    void Inputs.IGamePlayActions.OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            E_Interact?.Invoke();
+    }
+    void Inputs.IGamePlayActions.OnReload(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            E_Reload?.Invoke();
+    }
+    void Inputs.IGamePlayActions.OnInventory(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            E_Inventory?.Invoke();
+    }
+
+
 }
