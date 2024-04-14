@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b45dd1a124a7854d98098c02a3cfa41, type: 3}
+  m_Name: TestItem
+  m_EditorClassIdentifier: 
+  _itemName: Space Gun
+  _description: This is a laser gun.
+  _size:
+    x: 2
+    y: 1
+  _sprite: {fileID: 21300000, guid: 099a68febab12e440b2074f61d5e8637, type: 3}
+  _itemType: 0
