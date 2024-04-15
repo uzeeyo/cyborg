@@ -9,17 +9,25 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         ObserveInput();
+        ConnectionMovement_EventHub(true);
     }
 
     private void OnDestroy()
     {
         StopObserveInput();
+        ConnectionMovement_EventHub(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ConnectionMovement_EventHub(bool Connect)
     {
-        
+        if (Connect)
+        {
+            robotMovement.MovedWithSpeedOf += EventHub.PlayerMoveSpeed;
+        }
+        else
+        {
+            robotMovement.MovedWithSpeedOf -= EventHub.PlayerMoveSpeed;
+        }
     }
 
     private void ObserveInput()
