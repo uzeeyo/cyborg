@@ -1,8 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class RobotMovement : MonoBehaviour
 {
     [SerializeField] RobotMovementModel model;
+
+    public event Action<Vector2> MovedWithSpeedOf;
 
     private void Start()
     {
@@ -24,6 +29,8 @@ public class RobotMovement : MonoBehaviour
     private void Move()
     {
         model.rb.MovePosition(model.rb.position + model.DesiredDirection * model.SpeedCurrent * Time.fixedDeltaTime);
+
+        MovedWithSpeedOf?.Invoke(model.DesiredDirection * model.SpeedCurrent);
     }
 
     #region RecieveController
