@@ -54,7 +54,7 @@ public class EnergyManager
     }
     private void EnergyIsZero()
     {
-        Debug.Log("EnergyIsZero");
+        EventHub.EnergyEnded();
     }
     public void SetMaxElectricity(double maxElectricity)
     {
