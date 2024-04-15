@@ -5,8 +5,6 @@ namespace Cyborg.Player
 {
     public class Equipment : MonoBehaviour
     {
-        [SerializeField] private WeaponData _testWeapon;
-
         private Weapon _weapon;
 
         public Weapon Weapon => _weapon;
