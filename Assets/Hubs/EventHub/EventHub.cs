@@ -13,4 +13,13 @@ public static class EventHub
         E_ElectricityChangedNewRate?.Invoke(newRate);
     }
     #endregion
+
+    #region PlayerMoveSpeed
+    public static event Action<Vector2> E_PlayerMoveSpeed;
+
+    public static void PlayerMoveSpeed(Vector2 playerSpeed)
+    {
+        E_PlayerMoveSpeed?.Invoke(playerSpeed);
+    }
+    #endregion
 }
