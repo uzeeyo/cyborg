@@ -132,7 +132,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bfcc7a1a41f6f247a9f28b29cfc63f4
+      spriteID: c77429c5c058c934fb386ef739a1b332
       internalID: 407476047
       vertices: []
       indices: 
@@ -153,8 +153,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea8da8f2309a1844c9a2319ca7cafa7d
+      spriteID: 22ca07b3e9e0e7c4c94394ea96dbfb2a
       internalID: 1627051411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50c7a1be29146874791999a9e164bc5f
+      internalID: -434030914
       vertices: []
       indices: 
       edges: []
@@ -173,6 +194,7 @@ TextureImporter:
       Road_0: -1559354841
       Road_1: 407476047
       Road_2: 1627051411
+      Road_3: -434030914
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

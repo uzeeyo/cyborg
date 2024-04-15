@@ -41,6 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Bottom
+    uniqueID: 46329919
+    locked: 0
+  - name: FloorTop
+    uniqueID: 2968369369
+    locked: 0
   - name: Mid
     uniqueID: 1780119583
+    locked: 0
+  - name: Player
+    uniqueID: 2889135805
+    locked: 0
+  - name: Top
+    uniqueID: 3909568543
     locked: 0
