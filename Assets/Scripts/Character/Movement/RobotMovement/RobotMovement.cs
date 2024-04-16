@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 
@@ -14,16 +12,10 @@ public class RobotMovement : MonoBehaviour
         model.SpeedCurrent = model.SpeedNormal;
     }
 
-    private void Update()
-    {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
-        transform.up = direction;
-    }
-
     private void FixedUpdate()
     {
         Move();
+        Rotate();
     }
 
     private void Move()
@@ -33,10 +25,22 @@ public class RobotMovement : MonoBehaviour
         MovedWithSpeedOf?.Invoke(model.DesiredDirection * model.SpeedCurrent);
     }
 
+    private void Rotate()
+    {
+        transform.up = model.RotateDirection;
+    }
+
     #region RecieveController
     public void SetDirection(Vector2 desiredDirection)
     {
         model.DesiredDirection = desiredDirection;
+    }
+
+    public void SetRotateDirection(Vector2 mousePosition)
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
+        model.RotateDirection = direction;
     }
 
     public void Sprint()
