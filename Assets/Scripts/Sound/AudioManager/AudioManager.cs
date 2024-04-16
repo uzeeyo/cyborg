@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
 
     private void SetaE_Events()
     {
-        aE_Events = aE_Holder.events;
+        aE_Events = new List<AudioEvent>(aE_Holder.events);
 
         List<AudioEvent> removeList = new List<AudioEvent>();
         
