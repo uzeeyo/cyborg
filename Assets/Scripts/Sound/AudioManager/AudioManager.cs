@@ -10,7 +10,6 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         SetaE_Events();
-
     }
 
     private void SetaE_Events()
@@ -33,5 +32,18 @@ public class AudioManager : MonoBehaviour
             aE_Events.Remove(aEvent);
         }
     }
-   
+
+    private void OnDestroy()
+    {
+        RemoveAE_Events();
+    }
+
+    private void RemoveAE_Events()
+    {
+        foreach (AudioEvent aEvent in aE_Events)
+        {
+            aEvent.Destroy();
+        }
+    }
+
 }
