@@ -67,4 +67,15 @@ public static class EventHub
         E_EnergyEnded?.Invoke();
     }
     #endregion
+
+    #region EnergyEnded
+    public static event Action E_PlayerDeath;
+
+    public static void PlayerDeath()
+    {
+        E_PlayerDeath?.Invoke();
+    }
+    #endregion
+
+
 }
