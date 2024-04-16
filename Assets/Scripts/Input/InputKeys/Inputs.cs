@@ -89,6 +89,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""31ab1fa9-12f7-47ac-b596-ece055c48b8f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -223,6 +232,17 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dea969a4-247f-43d5-a641-ab8c1a9929df"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -238,6 +258,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""006776c6-f874-430d-986a-b28f4093e5ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -249,6 +278,39 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1187709-d5c3-4419-bd40-5a31147cfbad"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7caf6c84-bd49-4d5a-ab66-408f72857dfe"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc164e43-4c44-4f96-8690-df36b0dae36a"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -294,9 +356,11 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_GamePlay_Reload = m_GamePlay.FindAction("Reload", throwIfNotFound: true);
         m_GamePlay_Interact = m_GamePlay.FindAction("Interact", throwIfNotFound: true);
         m_GamePlay_Inventory = m_GamePlay.FindAction("Inventory", throwIfNotFound: true);
+        m_GamePlay_Rotate = m_GamePlay.FindAction("Rotate", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Esc = m_UI.FindAction("Esc", throwIfNotFound: true);
+        m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Esc = m_Menu.FindAction("Esc", throwIfNotFound: true);
@@ -368,6 +432,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Reload;
     private readonly InputAction m_GamePlay_Interact;
     private readonly InputAction m_GamePlay_Inventory;
+    private readonly InputAction m_GamePlay_Rotate;
     public struct GamePlayActions
     {
         private @Inputs m_Wrapper;
@@ -379,6 +444,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @Reload => m_Wrapper.m_GamePlay_Reload;
         public InputAction @Interact => m_Wrapper.m_GamePlay_Interact;
         public InputAction @Inventory => m_Wrapper.m_GamePlay_Inventory;
+        public InputAction @Rotate => m_Wrapper.m_GamePlay_Rotate;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -409,6 +475,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
+            @Rotate.started += instance.OnRotate;
+            @Rotate.performed += instance.OnRotate;
+            @Rotate.canceled += instance.OnRotate;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -434,6 +503,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
+            @Rotate.started -= instance.OnRotate;
+            @Rotate.performed -= instance.OnRotate;
+            @Rotate.canceled -= instance.OnRotate;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -456,11 +528,13 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Esc;
+    private readonly InputAction m_UI_Cancel;
     public struct UIActions
     {
         private @Inputs m_Wrapper;
         public UIActions(@Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Esc => m_Wrapper.m_UI_Esc;
+        public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -473,6 +547,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Esc.started += instance.OnEsc;
             @Esc.performed += instance.OnEsc;
             @Esc.canceled += instance.OnEsc;
+            @Cancel.started += instance.OnCancel;
+            @Cancel.performed += instance.OnCancel;
+            @Cancel.canceled += instance.OnCancel;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -480,6 +557,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Esc.started -= instance.OnEsc;
             @Esc.performed -= instance.OnEsc;
             @Esc.canceled -= instance.OnEsc;
+            @Cancel.started -= instance.OnCancel;
+            @Cancel.performed -= instance.OnCancel;
+            @Cancel.canceled -= instance.OnCancel;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -552,10 +632,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
         void OnEsc(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

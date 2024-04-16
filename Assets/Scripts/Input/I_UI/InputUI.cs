@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 [System.Serializable]
@@ -44,11 +41,18 @@ public class InputUI : Inputs.IUIActions
     #region Events
 
     public Action E_Esc;
+    public Action E_Cancel;
 
     #endregion
     void Inputs.IUIActions.OnEsc(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
             E_Esc?.Invoke();
+    }
+
+    void Inputs.IUIActions.OnCancel(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            E_Cancel?.Invoke();
     }
 }

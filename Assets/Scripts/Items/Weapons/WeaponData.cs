@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Cyborg.Items
 {
@@ -8,11 +9,13 @@ namespace Cyborg.Items
         [SerializeField] private float _damage;
         [SerializeField] private float _coolDown;
         [SerializeField] private float _projectileSpeed;
-        [SerializeField] private GameObject _projectilePrefab;
+        [SerializeField] private Projectile _projectilePrefab;
+        [SerializeField] private VisualEffect _hitEffect;
 
         public float Damage => _damage;
         public float CoolDown => _coolDown;
         public float ProjectileSpeed => _projectileSpeed;
-        public GameObject ProjectilePrefab => _projectilePrefab;
+        public Projectile ProjectilePrefab => _projectilePrefab;
+        public VisualEffect HitEffect => _hitEffect;
     }
 }

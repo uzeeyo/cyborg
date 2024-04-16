@@ -12,7 +12,7 @@ public class InputGameplay : Inputs.IGamePlayActions
     {
         get
         {
-            if(instance == null)
+            if (instance == null)
                 instance = new InputGameplay();
             return instance;
         }
@@ -57,6 +57,8 @@ public class InputGameplay : Inputs.IGamePlayActions
 
     public Action E_Inventory;
 
+    public Action<Vector2> E_Rotate;
+
     public Action E_GoMenu;
 
     #endregion
@@ -71,7 +73,7 @@ public class InputGameplay : Inputs.IGamePlayActions
         if (context.phase == InputActionPhase.Performed)
             E_SprintStart?.Invoke();
 
-        if(context.phase == InputActionPhase.Canceled)
+        if (context.phase == InputActionPhase.Canceled)
             E_SprintCancel?.Invoke();
     }
 
@@ -104,5 +106,8 @@ public class InputGameplay : Inputs.IGamePlayActions
             E_Inventory?.Invoke();
     }
 
-
+    void Inputs.IGamePlayActions.OnRotate(InputAction.CallbackContext context)
+    {
+        E_Rotate?.Invoke(context.action.ReadValue<Vector2>());
+    }
 }

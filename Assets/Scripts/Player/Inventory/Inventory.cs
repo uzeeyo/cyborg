@@ -9,33 +9,35 @@ namespace Cyborg.Player
 {
     public class Inventory : MonoBehaviour
     {
-        private List<Item> _items = new();
+        private List<InventoryItem> _items = new();
         private List<InventorySlot> _highlightedSlots;
         private InventorySlot[,] _grid = new InventorySlot[4, 3]; //TODO: get from player stats
         private GridLayoutGroup _gridGroup;
         private Guid _tempIdToClear;
 
+        [SerializeField] private GameObject _window;
         [SerializeField] private InventorySlot _slotPrefab;
+        [SerializeField] private InventoryItem _itemPrefab;
+
+        private static Inventory _instance;
+
+        public static Inventory Instance => _instance;
+        public InventoryItem ItemPrefab => _itemPrefab;
+        public InventoryItem ItemToDrop { get; set; }
 
         private void Awake()
         {
-            _gridGroup = GetComponentInChildren<GridLayoutGroup>();
-        }
-
-        private void Start()
-        {
-            _gridGroup.constraintCount = _grid.GetLength(0);
-
-            for (int y = 0; y < _grid.GetLength(1); y++)
+            if (_instance == null)
             {
-                for (int x = 0; x < _grid.GetLength(0); x++)
-                {
-                    var slot = Instantiate(_slotPrefab, _gridGroup.transform);
-                    slot.Init(this, new GridCoordinate(x, y));
-                    _grid[x, y] = slot;
-                }
+                _instance = this;
             }
+            else
+            {
+                Destroy(gameObject);
+            }
+            _gridGroup = GetComponentInChildren<GridLayoutGroup>(true);
         }
+
 
         private bool VerifySpaceEmpty(GridCoordinate position, GridCoordinate size)
         {
@@ -61,6 +63,56 @@ namespace Cyborg.Player
                 var image = item.GetComponent<Image>();
                 image.raycastTarget = !image.raycastTarget;
             }
+        }
+
+        public InventoryItem CreateInventoryItem()
+        {
+            return Instantiate(_itemPrefab, _window.transform);
+        }
+
+        public void PlaceItemInWindow(InventoryItem item)
+        {
+            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            item.transform.SetParent(_window.transform, true);
+            ItemToDrop = null;
+        }
+
+        private void Init()
+        {
+            foreach (var slot in _grid)
+            {
+                if (slot != null)
+                {
+                    Destroy(slot.gameObject);
+                }
+            }
+
+            _gridGroup.constraintCount = _grid.GetLength(0);
+
+            for (int y = 0; y < _grid.GetLength(1); y++)
+            {
+                for (int x = 0; x < _grid.GetLength(0); x++)
+                {
+                    var slot = Instantiate(_slotPrefab, _gridGroup.transform);
+                    slot.Init(this, new GridCoordinate(x, y));
+                    _grid[x, y] = slot;
+                }
+            }
+        }
+
+        public void Open()
+        {
+            InputModManager.Instance.UIMod();
+            _window.gameObject.SetActive(true);
+            Init();
+            InputUI.Instance.E_Esc += Close;
+        }
+
+        public void Close()
+        {
+            InputUI.Instance.E_Esc -= Close;
+            _window.gameObject.SetActive(false);
+            InputModManager.Instance.GamePlayMod();
         }
 
         public void Unhiglight()
@@ -106,11 +158,11 @@ namespace Cyborg.Player
             return slots;
         }
 
-        public bool TryMoveItem(Item item, GridCoordinate newPosition)
+        public bool TryMoveItem(InventoryItem item, GridCoordinate newPosition)
         {
             if (!VerifySpaceEmpty(newPosition, item.Size))
             {
-                item.GetComponent<TestDroppableItem>().ResetPosition();
+                //item.GetComponent<DroppableItem>().ResetPosition();
                 return false;
             }
 
@@ -128,13 +180,12 @@ namespace Cyborg.Player
             return true;
         }
 
-        public bool TryAddItem(Item item, GridCoordinate position)
+        public bool TryAddItem(InventoryItem inventoryItem, GridCoordinate position)
         {
-            if (!VerifySpaceEmpty(position, item.Size)) return false;
+            if (!VerifySpaceEmpty(position, inventoryItem.Size)) return false;
 
-            item.PlaceInInventory();
-            _items.Add(item);
-            FillGrid(item, position, item.Size);
+            _items.Add(inventoryItem);
+            FillGrid(inventoryItem, position, inventoryItem.Size);
 
             return true;
         }
@@ -144,7 +195,7 @@ namespace Cyborg.Player
             return _items.Where(item => item.Id == id).Select(item => item.InventoryPosition).First();
         }
 
-        private void FillGrid(Item item, GridCoordinate position, GridCoordinate size)
+        private void FillGrid(InventoryItem item, GridCoordinate position, GridCoordinate size)
         {
             for (int x = position.x; x < position.x + size.x; x++)
             {

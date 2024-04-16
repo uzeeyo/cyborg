@@ -7,15 +7,15 @@ using UnityEngine.UI;
 namespace Cyborg.Player
 {
     [RequireComponent(typeof(Image))]
-    public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+    public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IDropHandler
     {
         const float HIGHLIGHT_AMOUNT = 0.7f;
 
         private Image _background;
         private Inventory _inventory;
         private GridCoordinate _position;
-        private Item _item;
-        private Item _itemToClear;
+        private InventoryItem _item;
+        private InventoryItem _itemToClear;
         private Guid _idToClear;
         private Color _originalColor;
         private Guid _itemIdInSlot;
@@ -27,7 +27,8 @@ namespace Cyborg.Player
                 return _item == null || _itemIdInSlot == default;
             }
         }
-        public Item Item => _item;
+
+        public InventoryItem Item => _item;
         public Guid IdToClear => _idToClear;
 
         private void Awake()
@@ -42,7 +43,7 @@ namespace Cyborg.Player
             _position = position;
         }
 
-        public void PlaceItem(Item item)
+        public void PlaceItem(InventoryItem item)
         {
             _item = item;
             _itemIdInSlot = item.Id;
@@ -74,40 +75,40 @@ namespace Cyborg.Player
             _background.color = _originalColor;
         }
 
-        public void OnDrop(PointerEventData eventData)
+        public bool Drop()
         {
-            if (eventData.pointerDrag.TryGetComponent(out TestDroppableItem item))
+            _inventory.Unhiglight();
+            var item = _inventory.ItemToDrop;
+            if (item.InInventory && _inventory.TryMoveItem(item, _position))
             {
-                _inventory.Unhiglight();
-
-                if (item.Item.InInventory && _inventory.TryMoveItem(item.Item, _position))
-                {
-                    Debug.Log("Item moved.");
-                    item.transform.SetParent(transform);
-                    item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                    item.transform.SetParent(_inventory.transform, true);
-                    return;
-                }
-
-                if (_inventory.TryAddItem(item.Item, _position))
-                {
-                    Debug.Log("Item placed in inventory slot.");
-                    item.transform.SetParent(transform);
-                    item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                    item.transform.SetParent(_inventory.transform, true);
-                    return;
-                }
-
-                Debug.Log("Item could not be placed in inventory slot.");
-                item.ResetPosition();
-                return;
+                Debug.Log("Item moved.");
+                item.Moved = true;
+                item.transform.SetParent(transform);
+                Inventory.Instance.PlaceItemInWindow(item);
+                return true;
             }
-            Debug.Log("Non droppable item attempted to be dropped in inventory slot.");
+
+            if (_inventory.TryAddItem(item, _position))
+            {
+                Debug.Log("Item placed in inventory slot.");
+
+                item.EndPlacement();
+                item.transform.SetParent(transform);
+                Inventory.Instance.PlaceItemInWindow(item);
+                Destroy(item.WorldItem.gameObject);
+                item.WorldItem = null;
+                return true;
+            }
+
+            Debug.Log("Item could not be placed in inventory slot.");
+            //item.ResetPosition();
+            return false;
+
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (eventData.pointerDrag != null && eventData.pointerDrag.TryGetComponent(out TestDroppableItem item) && Empty)
+            if (_inventory.ItemToDrop != null && Empty)
             {
                 _inventory.Unhiglight();
             }
@@ -115,14 +116,26 @@ namespace Cyborg.Player
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (!Empty)
+            if (_inventory.ItemToDrop != null && Empty)
             {
-                Debug.Log("Slot is not empty.");
+                _inventory.Highlight(_position, _inventory.ItemToDrop.Size);
             }
+        }
 
-            if (eventData.pointerDrag != null && eventData.pointerDrag.TryGetComponent(out TestDroppableItem item) && Empty)
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (_inventory.ItemToDrop != null && Empty)
             {
-                _inventory.Highlight(_position, item.Item.Size);
+                _inventory.Unhiglight();
+                Drop();
+            }
+        }
+
+        public void OnDrop(PointerEventData eventData)
+        {
+            if (eventData.pointerDrag.TryGetComponent(out InventoryItem item))
+            {
+                Drop();
             }
         }
     }

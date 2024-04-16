@@ -23,8 +23,8 @@ namespace Cyborg.Items
             v.z = 0;
 
             Vector2 direction = (v - transform.position).normalized;
-            var obj = Instantiate(_data.ProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
-            obj.GetComponent<Rigidbody2D>().velocity = direction * _data.ProjectileSpeed;
+            var projectile = Instantiate(_data.ProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
+            projectile.Init(direction * _data.ProjectileSpeed, _data.HitEffect);
             StartCoroutine(StartCooldown());
         }
 
