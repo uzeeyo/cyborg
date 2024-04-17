@@ -1,7 +1,7 @@
 using UnityEngine;
 using FMODUnity;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Audio/Audio Event/PlayerDeath")]
+[CreateAssetMenu(menuName = "ScriptableObjects/Audio/Audio Event/Player/PlayerDeath")]
 public class AE_PlayerDeath : AudioEvent
 {
     [SerializeField] EventReference eventReference;

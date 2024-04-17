@@ -988,7 +988,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214798b5407f185468e91bd7fbd9e9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aE_Holder: {fileID: 11400000, guid: 10aef429c6199b84ea1947e001b5f343, type: 2}
+  aE_Holders:
+  - {fileID: 11400000, guid: 10aef429c6199b84ea1947e001b5f343, type: 2}
+  - {fileID: 11400000, guid: 1a23f95afb869844b8916fdbe87ef93f, type: 2}
 --- !u!4 &2129572578
 Transform:
   m_ObjectHideFlags: 0

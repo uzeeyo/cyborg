@@ -2,7 +2,7 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Audio/Audio Event/PlayerMovement")]
+[CreateAssetMenu(menuName = "ScriptableObjects/Audio/Audio Event/Player/PlayerMovement")]
 public class AE_PlayerMovement : AudioEvent
 {
     [SerializeField] EventReference eventReference;
