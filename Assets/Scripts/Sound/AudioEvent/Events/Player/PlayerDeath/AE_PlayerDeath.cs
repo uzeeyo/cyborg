@@ -18,8 +18,5 @@ public class AE_PlayerDeath : AudioEvent
     {
         RuntimeManager.PlayOneShot(eventReference);
     }
-    public override void Destroy()
-    {
-        EventHub.E_PlayerDeath -= Play;
-    }
+
 }
