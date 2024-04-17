@@ -1,7 +1,7 @@
 using UnityEngine;
 using FMODUnity;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Audio/Audio Event/PlayerDeath")]
+[CreateAssetMenu(menuName = "ScriptableObjects/Audio/Audio Event/Player/PlayerDeath")]
 public class AE_PlayerDeath : AudioEvent
 {
     [SerializeField] EventReference eventReference;
@@ -18,8 +18,5 @@ public class AE_PlayerDeath : AudioEvent
     {
         RuntimeManager.PlayOneShot(eventReference);
     }
-    public override void Destroy()
-    {
-        EventHub.E_PlayerDeath -= Play;
-    }
+
 }

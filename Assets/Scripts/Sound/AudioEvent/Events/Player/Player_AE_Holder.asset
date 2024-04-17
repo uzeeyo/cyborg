@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fca2c659b247d6043821b55b8b03041b, type: 3}
-  m_Name: AE_Holder
+  m_Name: Player_AE_Holder
   m_EditorClassIdentifier: 
   events:
   - {fileID: 11400000, guid: c5ebc114d81c2924f80d356ff62027d8, type: 2}
