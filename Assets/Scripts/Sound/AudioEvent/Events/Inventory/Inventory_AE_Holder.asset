@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca2c659b247d6043821b55b8b03041b, type: 3}
   m_Name: Inventory_AE_Holder
   m_EditorClassIdentifier: 
-  events: []
+  events:
+  - {fileID: 11400000, guid: 3c6cdd01d3fc6274382a06e6dc833619, type: 2}

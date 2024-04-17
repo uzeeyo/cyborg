@@ -77,5 +77,23 @@ public static class EventHub
     }
     #endregion
 
+    #region InventoryOpen
+    public static event Action E_InventoryOpened;
+
+    public static void InventoryOpened()
+    {
+        E_InventoryOpened?.Invoke();
+    }
+    #endregion
+
+    #region InventoryClose
+    public static event Action E_InventoryClosed;
+
+    public static void InventoryClosed()
+    {
+        E_InventoryClosed?.Invoke();
+    }
+    #endregion
+
 
 }
