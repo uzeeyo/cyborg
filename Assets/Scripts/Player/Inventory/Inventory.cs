@@ -142,6 +142,7 @@ namespace Cyborg.Player
             _window.gameObject.SetActive(true);
             Init();
             InputUI.Instance.E_Esc += Close;
+            EventHub.InventoryOpened();
         }
 
         public void Close()
@@ -149,6 +150,7 @@ namespace Cyborg.Player
             InputUI.Instance.E_Esc -= Close;
             _window.gameObject.SetActive(false);
             InputModManager.Instance.GamePlayMod();
+            EventHub.InventoryClosed();
         }
 
         public void Unhiglight()

@@ -2,7 +2,7 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Audio/Audio Event/PlayerMovement")]
+[CreateAssetMenu(menuName = "ScriptableObjects/Audio/Audio Event/Player/PlayerMovement")]
 public class AE_PlayerMovement : AudioEvent
 {
     [SerializeField] EventReference eventReference;
@@ -26,12 +26,4 @@ public class AE_PlayerMovement : AudioEvent
     {
         SoundInstance.setParameterByName("PlayerSpeed", speed.magnitude);
     }
-    public override void Destroy()
-    {
-        SoundInstance.stop((FMOD.Studio.STOP_MODE.IMMEDIATE));
-        SoundInstance.release();
-
-        EventHub.E_PlayerMoveSpeed -= SendSpeed;
-    }
-
 }

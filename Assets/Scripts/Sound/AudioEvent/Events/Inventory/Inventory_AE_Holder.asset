@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709ce2e32256ffa4cacc0ab3575aed69, type: 3}
-  m_Name: Player Death
+  m_Script: {fileID: 11500000, guid: fca2c659b247d6043821b55b8b03041b, type: 3}
+  m_Name: Inventory_AE_Holder
   m_EditorClassIdentifier: 
-  eventReference:
-    Guid:
-      Data1: -1323016210
-      Data2: 1233015894
-      Data3: 1076861356
-      Data4: -1673938271
-    Path: event:/Player/PlayerDeath
+  events:
+  - {fileID: 11400000, guid: 3c6cdd01d3fc6274382a06e6dc833619, type: 2}

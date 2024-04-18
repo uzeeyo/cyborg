@@ -969,7 +969,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2129572578}
   - component: {fileID: 2129572577}
-  - component: {fileID: 2129572579}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -989,7 +988,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214798b5407f185468e91bd7fbd9e9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aE_Holder: {fileID: 11400000, guid: 10aef429c6199b84ea1947e001b5f343, type: 2}
+  aE_Holders:
+  - {fileID: 11400000, guid: 10aef429c6199b84ea1947e001b5f343, type: 2}
+  - {fileID: 11400000, guid: 1a23f95afb869844b8916fdbe87ef93f, type: 2}
 --- !u!4 &2129572578
 Transform:
   m_ObjectHideFlags: 0
@@ -1005,19 +1006,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2129572579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129572575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1387d8a1d78bf3c439d46577afdc5325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FireSoundEvent: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

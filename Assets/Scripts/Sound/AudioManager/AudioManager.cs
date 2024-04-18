@@ -1,12 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AE_Holder aE_Holder;
-    private List<AudioEvent> aE_Events;
+    public static AudioManager Instance { get; private set; }
 
+    [SerializeField] private AE_Holder[] aE_Holders;
+
+    private void Awake()
+    {
+        if (Instance != null)
+            Destroy(gameObject);
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            
+        }
+    }
     void Start()
     {
         SetaE_Events();
@@ -14,36 +24,14 @@ public class AudioManager : MonoBehaviour
 
     private void SetaE_Events()
     {
-        aE_Events = new List<AudioEvent>(aE_Holder.events);
-
-        List<AudioEvent> removeList = new List<AudioEvent>();
-        
-        foreach (AudioEvent aEvent in aE_Events)
+        foreach(AE_Holder holder in aE_Holders)
         {
-            if (!aEvent.TryBegin())
+            foreach(AudioEvent audioEvent in holder.events)
             {
-                removeList.Add(aEvent);
+                audioEvent.TryBegin();
             }
         }
 
-        foreach (AudioEvent aEvent in removeList)
-        {
-            print("Fail Sound Event " +  aEvent.name);
-            aE_Events.Remove(aEvent);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        RemoveAE_Events();
-    }
-
-    private void RemoveAE_Events()
-    {
-        foreach (AudioEvent aEvent in aE_Events)
-        {
-            aEvent.Destroy();
-        }
     }
 
 }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe6bfb8f086f7f49bf4bf2dad51398e, type: 3}
+  m_Name: Inventory Open
+  m_EditorClassIdentifier: 
+  InventoryOpenEventReference:
+    Guid:
+      Data1: 923663098
+      Data2: 1176772108
+      Data3: -457403749
+      Data4: 2031451627
+    Path: event:/Inventory/InventoryOpen
+  InventoryClosedEventReference:
+    Guid:
+      Data1: 696978582
+      Data2: 1184118516
+      Data3: -754367339
+      Data4: 1534408508
+    Path: event:/Inventory/InventoryClose
