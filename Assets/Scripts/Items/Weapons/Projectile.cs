@@ -9,15 +9,18 @@ namespace Cyborg.Items
     {
         private VisualEffect _hitEffect;
 
+        public float Damage { get; private set; }
+
         private void Start()
         {
             StartCoroutine(DestroyAfterTime());
         }
 
-        public void Init(Vector2 velocity, VisualEffect hitEffect)
+        public void Init(Vector2 velocity, WeaponData data)
         {
             GetComponent<Rigidbody2D>().velocity = velocity;
-            _hitEffect = hitEffect;
+            _hitEffect = data.HitEffect;
+            Damage = data.Damage;
         }
 
         private IEnumerator DestroyAfterTime()

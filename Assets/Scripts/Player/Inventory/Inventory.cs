@@ -38,6 +38,26 @@ namespace Cyborg.Player
             _gridGroup = GetComponentInChildren<GridLayoutGroup>(true);
         }
 
+        private GridCoordinate FindEmptySpace(GridCoordinate size)
+        {
+            for (int x = 0; x < _grid.GetLength(0); x++)
+            {
+                for (int y = 0; y < _grid.GetLength(1); y++)
+                {
+                    if (VerifySpaceEmpty(new GridCoordinate(x, y), size))
+                    {
+                        return new GridCoordinate(x, y);
+                    }
+
+                    //Check if the item fits rotated
+                    if (VerifySpaceEmpty(new GridCoordinate(x, y), new GridCoordinate(y, x)))
+                    {
+                        return new GridCoordinate(y, x);
+                    }
+                }
+            }
+            return new GridCoordinate(-1, -1);
+        }
 
         private bool VerifySpaceEmpty(GridCoordinate position, GridCoordinate size)
         {
@@ -65,9 +85,25 @@ namespace Cyborg.Player
             }
         }
 
-        public InventoryItem CreateInventoryItem()
+        public InventoryItem CreateInventoryItem(Item item)
         {
-            return Instantiate(_itemPrefab, _window.transform);
+            var inventoryItem = Instantiate(_itemPrefab, _window.transform);
+            inventoryItem.WorldItem = item;
+            inventoryItem.StartPlacement(item.Data);
+            if (item.Data is EquipmentData)
+            {
+                var data = item.Data as EquipmentData;
+                EquippableItem component = data.SlotType switch
+                {
+                    SlotType.Head => inventoryItem.gameObject.AddComponent<HeadEquippableItem>(),
+                    SlotType.Arm => inventoryItem.gameObject.AddComponent<ArmEquippableItem>(),
+                    SlotType.Leg => inventoryItem.gameObject.AddComponent<LegEquippableItem>(),
+                    _ => null
+                };
+                component.Init(item.Data as EquipmentData);
+            }
+
+            return inventoryItem;
         }
 
         public void PlaceItemInWindow(InventoryItem item)
@@ -182,6 +218,21 @@ namespace Cyborg.Player
             return true;
         }
 
+        public bool TryAddItem(InventoryItem inventoryItem)
+        {
+            var position = FindEmptySpace(inventoryItem.Size);
+
+            //No space found
+            if (position.x == -1) return false;
+
+            inventoryItem.Rotate();
+
+            _items.Add(inventoryItem);
+            FillGrid(inventoryItem, position, inventoryItem.Size);
+
+            return true;
+        }
+
         public bool TryAddItem(InventoryItem inventoryItem, GridCoordinate position)
         {
             if (!VerifySpaceEmpty(position, inventoryItem.Size)) return false;
@@ -228,6 +279,15 @@ namespace Cyborg.Player
                 {
                     slot.Clear();
                 }
+            }
+        }
+
+        public void RemoveItem(Guid id)
+        {
+            var itemToRemove = _items.Where(item => item.Id == id);
+            if (itemToRemove.Count() != 0)
+            {
+                _items.Remove(itemToRemove.First());
             }
         }
 
