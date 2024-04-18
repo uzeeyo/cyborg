@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         InputGameplay.Instance.E_Move = SendMove;
         InputGameplay.Instance.E_SprintStart = SendSprintStart;
         InputGameplay.Instance.E_SprintCancel = SendSprintCancel;
-        InputGameplay.Instance.E_Rotate = SendRotate;
+        InputGameplay.Instance.E_Rotate += SendRotate;
     }
 
     private void StopObserveInput()
@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
             InputGameplay.Instance.E_SprintStart = null;
         if (InputGameplay.Instance.E_SprintCancel == SendSprintCancel)
             InputGameplay.Instance.E_SprintCancel = null;
+        InputGameplay.Instance.E_Rotate -= SendRotate;
     }
 
     private void SendMove(Vector2 DesiredDirection)
