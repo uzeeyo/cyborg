@@ -18,9 +18,7 @@ namespace Cyborg.Items
         public void PickUp()
         {
             Inventory.Instance.Open();
-            _iconObj = Inventory.Instance.CreateInventoryItem();
-            _iconObj.WorldItem = Item;
-            _iconObj.StartPlacement(Item.Data);
+            _iconObj = Inventory.Instance.CreateInventoryItem(Item);
 
             Inventory.Instance.ToggleItemRaycasts();
             Inventory.Instance.ItemToDrop = _iconObj;

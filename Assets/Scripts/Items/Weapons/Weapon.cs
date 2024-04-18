@@ -17,14 +17,14 @@ namespace Cyborg.Items
 
         public void Shoot()
         {
-            if (_onCooldown) return;
+            if (_onCooldown || !EnergyManager.Instance.TryToRemoveEnergy(_data.EnergyCost)) return;
 
             var v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             v.z = 0;
 
             Vector2 direction = (v - transform.position).normalized;
             var projectile = Instantiate(_data.ProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
-            projectile.Init(direction * _data.ProjectileSpeed, _data.HitEffect);
+            projectile.Init(direction * _data.ProjectileSpeed, _data);
             StartCoroutine(StartCooldown());
         }
 

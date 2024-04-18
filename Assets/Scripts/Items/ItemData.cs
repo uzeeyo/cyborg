@@ -10,11 +10,13 @@ namespace Cyborg.Items
         [SerializeField] private GridCoordinate _size;
         [SerializeField] private Sprite _sprite;
         [SerializeField] private ItemType _itemType;
+        [SerializeField] private float _energyCost;
 
         public string ItemName => _itemName;
         public string Description => _description;
         public GridCoordinate Size => _size;
         public Sprite Sprite => _sprite;
         public ItemType ItemType => _itemType;
+        public float EnergyCost => _energyCost;
     }
 }

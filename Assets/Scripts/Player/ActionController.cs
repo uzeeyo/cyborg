@@ -1,16 +1,17 @@
+using Cyborg.Items;
 using UnityEngine;
 
 namespace Cyborg.Player
 {
     public class ActionController : MonoBehaviour
     {
-        private Equipment _equipment;
+        private EquipmentManager _equipment;
 
         [SerializeField] private Inventory _inventory;
 
         private void Awake()
         {
-            _equipment = GetComponent<Equipment>();
+            _equipment = GetComponent<EquipmentManager>();
             ObserveInput();
         }
 

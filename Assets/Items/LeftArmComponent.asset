@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b45dd1a124a7854d98098c02a3cfa41, type: 3}
-  m_Name: TestItem 2
+  m_Script: {fileID: 11500000, guid: 3268892ab700e7b46967f4912b1dccea, type: 3}
+  m_Name: LeftArmComponent
   m_EditorClassIdentifier: 
-  _itemName: Small Battery
-  _description: This is a battery.
+  _itemName: Left arm part
+  _description: none
   _size:
-    x: 1
-    y: 1
+    x: 0
+    y: 0
   _sprite: {fileID: 21300000, guid: d827346e5f4b2f74188adb06f1321b5d, type: 3}
-  _itemType: 1
+  _itemType: 0
   _energyCost: 0
+  _slotType: 2

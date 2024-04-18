@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae62ed581ff8344bb5c404487cdbc32, type: 3}
   m_Name: Plasma
   m_EditorClassIdentifier: 
-  _itemName: Test Weapon
-  _description: This is just a test.
+  _itemName: Plasma Rifle
+  _description: Shoots a fast moving projectile.
   _size:
     x: 1
     y: 1
   _sprite: {fileID: 21300000, guid: 099a68febab12e440b2074f61d5e8637, type: 3}
   _itemType: 0
+  _energyCost: 1
   _damage: 5
   _coolDown: 0.3
   _projectileSpeed: 10

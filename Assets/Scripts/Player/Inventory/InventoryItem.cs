@@ -56,7 +56,7 @@ namespace Cyborg.Items
             StopAllCoroutines();
         }
 
-        private void Rotate()
+        public void Rotate()
         {
             _size = new GridCoordinate(_size.y, _size.x);
         }
