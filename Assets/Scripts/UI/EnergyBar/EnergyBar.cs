@@ -10,6 +10,11 @@ public class EnergyBar : MonoBehaviour
     {
         EventHub.E_ElectricityChangedNewRate += SetEnergeBarImageFill;
     }
+
+    private void OnDestroy()
+    {
+        EventHub.E_ElectricityChangedNewRate -= SetEnergeBarImageFill;
+    }
     private void SetEnergeBarImageFill(float rate)
     {
         EnergyImage.fillAmount = rate;
