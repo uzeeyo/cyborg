@@ -42,7 +42,7 @@ namespace Cyborg.Player
 
         private void LeftClickCancel()
         {
-
+            _equipment.Weapon.ShootCancel();
         }
 
         private void Reload()
