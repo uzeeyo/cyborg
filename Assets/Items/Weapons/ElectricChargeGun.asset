@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cae62ed581ff8344bb5c404487cdbc32, type: 3}
-  m_Name: Plasma
+  m_Name: ElectricChargeGun
   m_EditorClassIdentifier: 
-  _itemName: Plasma Rifle
-  _description: Shoots a fast moving projectile.
+  _itemName: Electric Charge Gun
+  _description: Description
   _size:
-    x: 1
-    y: 1
-  _sprite: {fileID: 21300000, guid: 099a68febab12e440b2074f61d5e8637, type: 3}
+    x: 0
+    y: 0
+  _sprite: {fileID: 0}
   _itemType: 0
-  _energyCost: 1
+  _energyCost: 3
   _damage: 5
-  _coolDown: 0.3
-  _projectileSpeed: 10
+  _coolDown: 1
+  _projectileSpeed: 20
   _projectilePrefab: {fileID: 845505018324899575, guid: 3a4d512a80268ca4b93d29aeba9ff095, type: 3}
   _hitEffect: {fileID: 1063916859749532868, guid: 4c712898dbb3c3145a2843c7c63c9e65, type: 3}
   _FmodEvent:
     Guid:
-      Data1: -467281640
-      Data2: 1165425942
-      Data3: -1376407661
-      Data4: 311790844
-    Path: event:/Weapon/PlasmaWeapon
+      Data1: 2046742026
+      Data2: 1196949886
+      Data3: -1824874832
+      Data4: -819740383
+    Path: event:/Weapon/Electric Charge Gun

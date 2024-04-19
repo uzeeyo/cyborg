@@ -22,6 +22,7 @@ namespace Cyborg.Items
 
             Vector2 direction = GetForwardDirection();
             Fire(direction);
+            PlayOneShotSound();
             
             BeginCoolDown();
         }
@@ -61,7 +62,10 @@ namespace Cyborg.Items
             _onCooldown = false;
             WeaponReady();
         }
-
+        protected virtual void PlayOneShotSound()
+        {
+            EventHub.PlayOneShotSound(_data.FmodEvent);
+        }
         protected virtual void WeaponReady()
         {
 
