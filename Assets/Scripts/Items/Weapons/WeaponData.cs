@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.VFX;
+using FMODUnity;
 
 namespace Cyborg.Items
 {
@@ -11,11 +12,13 @@ namespace Cyborg.Items
         [SerializeField] private float _projectileSpeed;
         [SerializeField] private Projectile _projectilePrefab;
         [SerializeField] private VisualEffect _hitEffect;
+        [SerializeField] private EventReference _FmodEvent;
 
         public float Damage => _damage;
         public float CoolDown => _coolDown;
         public float ProjectileSpeed => _projectileSpeed;
         public Projectile ProjectilePrefab => _projectilePrefab;
         public VisualEffect HitEffect => _hitEffect;
+        public EventReference FmodEvent => _FmodEvent;
     }
 }
