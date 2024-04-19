@@ -26,8 +26,9 @@ namespace Cyborg.Items
                 {
                     BeginCoolDown();
                     Fire(GetForwardDirection());
+                    PlayOneShotSound();
                 }
-                    yield return null;
+                yield return null;
             }
         }
 

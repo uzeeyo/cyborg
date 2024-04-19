@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public static class EventHub 
 {
@@ -94,6 +95,17 @@ public static class EventHub
         E_InventoryClosed?.Invoke();
     }
     #endregion
+
+    #region PlayOneShotSound
+    public static event Action<EventReference> E_PlayOneShotSound;
+
+    public static void PlayOneShotSound(EventReference reference)
+    {
+        E_PlayOneShotSound?.Invoke(reference);
+    }
+    #endregion
+
+
 
 
 }
