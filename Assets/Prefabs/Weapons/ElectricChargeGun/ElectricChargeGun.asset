@@ -20,11 +20,9 @@ MonoBehaviour:
   _sprite: {fileID: 0}
   _itemType: 0
   _energyCost: 3
-  _damage: 5
-  _coolDown: 1
-  _projectileSpeed: 20
-  _projectilePrefab: {fileID: 845505018324899575, guid: 3a4d512a80268ca4b93d29aeba9ff095, type: 3}
-  _hitEffect: {fileID: 1063916859749532868, guid: 4c712898dbb3c3145a2843c7c63c9e65, type: 3}
+  <CoolDown>k__BackingField: 0.5
+  <ProjectilePrefab>k__BackingField: {fileID: 7135922567869893804, guid: c25c26b911f0d7f47a65085999429a5f, type: 3}
+  HitEffecddt: {fileID: 1063916859749532868, guid: 4c712898dbb3c3145a2843c7c63c9e65, type: 3}
   _FmodEvent:
     Guid:
       Data1: 2046742026

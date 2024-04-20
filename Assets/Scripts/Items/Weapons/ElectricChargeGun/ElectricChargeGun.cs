@@ -8,7 +8,9 @@ namespace Cyborg.Items
     public class ElectricChargeGun : Weapon
     {
         [SerializeField] private float ChargeSpeed;
-        [SerializeField] private float MaxCharge;       
+        [SerializeField] private float MaxCharge;
+
+        private float BulletSpeed = 10;
         
         float Charge;
         public override void Shoot()
@@ -21,8 +23,7 @@ namespace Cyborg.Items
 
         
         public override void ShootCancel()
-        {
-            
+        {        
             BeginCoolDown();
             StopAllCoroutines();
             StartCoroutine(FireOperations());
@@ -36,8 +37,7 @@ namespace Cyborg.Items
             for(int i = 0; i < bulletCount; i++)
             {
                 direction = GetForwardDirection();
-                var projectile = Instantiate(_data.ProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
-                projectile.Init(direction * _data.ProjectileSpeed, _data);
+                Fire(direction);
 
                 yield return new WaitForSeconds(0.05f);
             }

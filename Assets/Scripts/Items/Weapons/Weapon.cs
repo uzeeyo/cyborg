@@ -30,7 +30,7 @@ namespace Cyborg.Items
         protected void Fire(Vector2 direction)
         {
             var projectile = Instantiate(_data.ProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
-            projectile.Init(direction * _data.ProjectileSpeed, _data);
+            projectile.SetDirection(direction);
         }
         protected bool IsAbleToFire()
         {
@@ -64,7 +64,7 @@ namespace Cyborg.Items
         }
         protected virtual void PlayOneShotSound()
         {
-            EventHub.PlayOneShotSound(_data.FmodEvent);
+            EventHub.PlayOneShotSound(_data._FmodEvent);
         }
         protected virtual void WeaponReady()
         {
