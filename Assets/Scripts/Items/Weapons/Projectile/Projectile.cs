@@ -12,7 +12,10 @@ namespace Cyborg.Items
             GetComponent<Rigidbody2D>().velocity = velocity;
         }
 
-        public abstract void SetDirection(Vector2 direction);
+        public virtual void SetDirection(Vector2 direction)
+        {
+
+        }
       
 
         protected IEnumerator DestroyAfterTime()
