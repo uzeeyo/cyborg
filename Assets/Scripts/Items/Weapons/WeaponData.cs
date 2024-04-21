@@ -4,21 +4,15 @@ using FMODUnity;
 
 namespace Cyborg.Items
 {
-    [CreateAssetMenu(fileName = "New WeaponData", menuName = "ScriptableObjects/WeaponData")]
+    [CreateAssetMenu(fileName = "New WeaponData", menuName = "ScriptableObjects/Weapon/WeaponData")]
     public class WeaponData : ItemData
     {
-        [SerializeField] private float _damage;
-        [SerializeField] private float _coolDown;
-        [SerializeField] private float _projectileSpeed;
-        [SerializeField] private Projectile _projectilePrefab;
-        [SerializeField] private VisualEffect _hitEffect;
-        [SerializeField] private EventReference _FmodEvent;
+        [field: SerializeField] public float CoolDown { get; private set; }
 
-        public float Damage => _damage;
-        public float CoolDown => _coolDown;
-        public float ProjectileSpeed => _projectileSpeed;
-        public Projectile ProjectilePrefab => _projectilePrefab;
-        public VisualEffect HitEffect => _hitEffect;
-        public EventReference FmodEvent => _FmodEvent;
+        [field: SerializeField] public Projectile ProjectilePrefab { get; private set; }
+
+        [SerializeField] public VisualEffect HitEffecddt;
+
+        [SerializeField] public EventReference _FmodEvent;
     }
 }

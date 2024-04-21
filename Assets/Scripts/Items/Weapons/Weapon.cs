@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 namespace Cyborg.Items
 {
@@ -30,8 +31,20 @@ namespace Cyborg.Items
         protected void Fire(Vector2 direction)
         {
             var projectile = Instantiate(_data.ProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
-            projectile.Init(direction * _data.ProjectileSpeed, _data);
+            projectile.SetDirection(direction);
         }
+        protected T Fire<T>(T t, Vector2 direction) where T : Projectile
+        {
+            T projectile = Instantiate(t, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
+            projectile.SetDirection(direction);
+            return t;
+        }
+        protected T Fire<T>(T t) where T : Projectile
+        {
+            T projectile = Instantiate(t, transform.position, Quaternion.identity);
+            return projectile;
+        }
+
         protected bool IsAbleToFire()
         {
             if(_onCooldown || !EnergyManager.Instance.TryToRemoveEnergy(_data.EnergyCost))
@@ -40,10 +53,14 @@ namespace Cyborg.Items
         }
         protected Vector2 GetForwardDirection()
         {
-            Vector3 mousePos = GlobalObjects.MainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePos = GetMousePosition();
             mousePos -= transform.position;
             Vector2 forward = mousePos;
             return forward.normalized;
+        }
+        protected Vector2 GetMousePosition()
+        {
+            return GlobalObjects.MainCamera.ScreenToWorldPoint(Input.mousePosition);
         }
 
         public virtual void ShootCancel()
@@ -64,7 +81,7 @@ namespace Cyborg.Items
         }
         protected virtual void PlayOneShotSound()
         {
-            EventHub.PlayOneShotSound(_data.FmodEvent);
+            EventHub.PlayOneShotSound(_data._FmodEvent);
         }
         protected virtual void WeaponReady()
         {
