@@ -105,7 +105,23 @@ public static class EventHub
     }
     #endregion
 
+    #region ModGamePlay
+    public static event Action E_ModGamePlay;
 
+    public static void ModGamePlay()
+    {
+        E_ModGamePlay?.Invoke();
+    }
+    #endregion
+
+    #region ModMenu
+    public static event Action E_ModMenu;
+
+    public static void ModMenu()
+    {
+        E_ModMenu?.Invoke();
+    }
+    #endregion
 
 
 }
