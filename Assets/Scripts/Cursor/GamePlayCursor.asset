@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c61b543291e12b4f85b336b1eda5a94, type: 3}
   m_Name: GamePlayCursor
   m_EditorClassIdentifier: 
-  <cursorTexture>k__BackingField: {fileID: 2800000, guid: 651c1baeecadf694284950c802cddcbf, type: 3}
+  <cursorTexture>k__BackingField: {fileID: 2800000, guid: d3c9bd5ba7cdd9f41ab3047dde774998, type: 3}
   <hotSpot>k__BackingField: {x: 0, y: 0}
