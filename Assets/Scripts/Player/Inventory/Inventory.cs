@@ -11,19 +11,12 @@ namespace Cyborg.Player
     {
         private List<InventoryItem> _items = new();
         private List<InventorySlot> _highlightedSlots;
-        private InventorySlot[,] _grid = new InventorySlot[4, 3]; //TODO: get from player stats
-        private GridLayoutGroup _gridGroup;
+        private InventorySlot[,] _grid = new InventorySlot[4, 3];
         private Guid _tempIdToClear;
-
-        [SerializeField] private GameObject _window;
-        [SerializeField] private InventorySlot _slotPrefab;
-        [SerializeField] private InventoryItem _itemPrefab;
 
         private static Inventory _instance;
 
         public static Inventory Instance => _instance;
-        public InventoryItem ItemPrefab => _itemPrefab;
-        public InventoryItem ItemToDrop { get; set; }
 
         private void Awake()
         {
@@ -35,7 +28,19 @@ namespace Cyborg.Player
             {
                 Destroy(gameObject);
             }
-            _gridGroup = GetComponentInChildren<GridLayoutGroup>(true);
+
+            int childCount = 0;
+
+            for (int y = 0; y < _grid.GetLength(1); y++)
+            {
+                for (int x = 0; x < _grid.GetLength(0); x++)
+                {
+                    InventorySlot slot = transform.GetChild(childCount).GetComponent<InventorySlot>();
+                    slot.Init(this, new GridCoordinate(x, y));
+                    _grid[x, y] = slot;
+                    childCount++;
+                }
+            }
         }
 
         private GridCoordinate FindEmptySpace(GridCoordinate size)
@@ -83,74 +88,6 @@ namespace Cyborg.Player
                 var image = item.GetComponent<Image>();
                 image.raycastTarget = !image.raycastTarget;
             }
-        }
-
-        public InventoryItem CreateInventoryItem(Item item)
-        {
-            var inventoryItem = Instantiate(_itemPrefab, _window.transform);
-            inventoryItem.WorldItem = item;
-            inventoryItem.StartPlacement(item.Data);
-            if (item.Data is EquipmentData)
-            {
-                var data = item.Data as EquipmentData;
-                EquippableItem component = data.SlotType switch
-                {
-                    SlotType.Head => inventoryItem.gameObject.AddComponent<HeadEquippableItem>(),
-                    SlotType.Arm => inventoryItem.gameObject.AddComponent<ArmEquippableItem>(),
-                    SlotType.Leg => inventoryItem.gameObject.AddComponent<LegEquippableItem>(),
-                    _ => null
-                };
-                component.Init(item.Data as EquipmentData);
-            }
-
-            return inventoryItem;
-        }
-
-        public void PlaceItemInWindow(InventoryItem item)
-        {
-            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            item.transform.SetParent(_window.transform, true);
-            ItemToDrop = null;
-        }
-
-        private void Init()
-        {
-            foreach (var slot in _grid)
-            {
-                if (slot != null)
-                {
-                    Destroy(slot.gameObject);
-                }
-            }
-
-            _gridGroup.constraintCount = _grid.GetLength(0);
-
-            for (int y = 0; y < _grid.GetLength(1); y++)
-            {
-                for (int x = 0; x < _grid.GetLength(0); x++)
-                {
-                    var slot = Instantiate(_slotPrefab, _gridGroup.transform);
-                    slot.Init(this, new GridCoordinate(x, y));
-                    _grid[x, y] = slot;
-                }
-            }
-        }
-
-        public void Open()
-        {
-            InputModManager.Instance.UIMod();
-            _window.gameObject.SetActive(true);
-            Init();
-            InputUI.Instance.E_Esc += Close;
-            EventHub.InventoryOpened();
-        }
-
-        public void Close()
-        {
-            InputUI.Instance.E_Esc -= Close;
-            _window.gameObject.SetActive(false);
-            InputModManager.Instance.GamePlayMod();
-            EventHub.InventoryClosed();
         }
 
         public void Unhiglight()

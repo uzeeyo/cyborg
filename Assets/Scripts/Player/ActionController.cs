@@ -1,4 +1,5 @@
 using Cyborg.Items;
+using Cyborg.UI;
 using UnityEngine;
 
 namespace Cyborg.Player
@@ -6,12 +7,12 @@ namespace Cyborg.Player
     public class ActionController : MonoBehaviour
     {
         private EquipmentManager _equipment;
-
-        [SerializeField] private Inventory _inventory;
+        private ItemWindow _itemWindow;
 
         private void Awake()
         {
             _equipment = GetComponent<EquipmentManager>();
+            _itemWindow = FindObjectOfType<ItemWindow>();
             ObserveInput();
         }
 
@@ -53,7 +54,7 @@ namespace Cyborg.Player
 
         private void OpenInventory()
         {
-            _inventory.Open();
+            _itemWindow.Open();
         }
     }
 }

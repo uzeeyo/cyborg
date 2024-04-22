@@ -1,4 +1,5 @@
 using Cyborg.Player;
+using Cyborg.UI;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -16,9 +17,8 @@ namespace Cyborg.Items
         private bool _rotated;
         private bool _inInventory;
         private Image _image;
-        private Coroutine _listenForRotateCoroutine;
-        private Coroutine _listenForMoveCouroutine;
         private Vector2 _originalPosition;
+        private ItemWindow _itemWindow;
 
         public Guid Id => _id;
         public ItemData Data => _data;
@@ -32,6 +32,7 @@ namespace Cyborg.Items
         {
             _image = GetComponent<Image>();
             _id = Guid.NewGuid();
+            _itemWindow = GetComponentInParent<ItemWindow>();
         }
 
         public void StartPlacement(ItemData data)
@@ -45,8 +46,8 @@ namespace Cyborg.Items
 
         private void Move()
         {
-            _listenForMoveCouroutine = StartCoroutine(MoveWithMouse());
-            _listenForRotateCoroutine = StartCoroutine(ListenForRotate());
+            StartCoroutine(MoveWithMouse());
+            StartCoroutine(ListenForRotate());
         }
 
         public void EndPlacement()
@@ -93,11 +94,11 @@ namespace Cyborg.Items
             if (!_inInventory) return;
 
             _originalPosition = (transform as RectTransform).anchoredPosition;
-            _listenForRotateCoroutine = StartCoroutine(ListenForRotate());
+            StartCoroutine(ListenForRotate());
 
             Inventory.Instance.ToggleItemRaycasts();
             Inventory.Instance.TempRemoveItem(_id);
-            Inventory.Instance.ItemToDrop = this;
+            _itemWindow.ItemToDrop = this;
             _image.raycastTarget = false;
             Moved = false;
         }
@@ -106,7 +107,7 @@ namespace Cyborg.Items
         {
             if (!_inInventory) return;
             Debug.Log("End drag.");
-            StopCoroutine(_listenForRotateCoroutine);
+            StopAllCoroutines();
             Inventory.Instance.ToggleItemRaycasts();
             _image.raycastTarget = true;
             if (!Moved)
@@ -114,9 +115,9 @@ namespace Cyborg.Items
                 ResetPosition();
                 Moved = false;
             }
+
+            StopAllCoroutines();
         }
-
-
 
         public void ResetPosition()
         {
