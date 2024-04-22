@@ -1,13 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 namespace Cyborg.Items
 {
     public class Weapon : MonoBehaviour
     {
-        private bool _onCooldown;
+        protected bool _onCooldown;
 
-        [SerializeField] private WeaponData _data;
+        [SerializeField] protected WeaponData _data;
 
         public WeaponData Data
         {
@@ -15,24 +16,76 @@ namespace Cyborg.Items
             set => _data = value;
         }
 
-        public void Shoot()
+        public virtual void Shoot()
         {
-            if (_onCooldown || !EnergyManager.Instance.TryToRemoveEnergy(_data.EnergyCost)) return;
+            if (!IsAbleToFire()) 
+                return;
 
-            var v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            v.z = 0;
-
-            Vector2 direction = (v - transform.position).normalized;
-            var projectile = Instantiate(_data.ProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
-            projectile.Init(direction * _data.ProjectileSpeed, _data);
-            StartCoroutine(StartCooldown());
+            Vector2 direction = GetForwardDirection();
+            Fire(direction);
+            PlayOneShotSound();
+            
+            BeginCoolDown();
         }
 
+        protected void Fire(Vector2 direction)
+        {
+            var projectile = Instantiate(_data.ProjectilePrefab, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
+            projectile.SetDirection(direction);
+        }
+        protected T Fire<T>(T t, Vector2 direction) where T : Projectile
+        {
+            T projectile = Instantiate(t, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
+            projectile.SetDirection(direction);
+            return t;
+        }
+        protected T Fire<T>(T t) where T : Projectile
+        {
+            T projectile = Instantiate(t, transform.position, Quaternion.identity);
+            return projectile;
+        }
+
+        protected bool IsAbleToFire()
+        {
+            if(_onCooldown || !EnergyManager.Instance.TryToRemoveEnergy(_data.EnergyCost))
+                return false;
+            return true;
+        }
+        protected Vector2 GetForwardDirection()
+        {
+            Vector3 mousePos = GetMousePosition();
+            mousePos -= transform.position;
+            Vector2 forward = mousePos;
+            return forward.normalized;
+        }
+        protected Vector2 GetMousePosition()
+        {
+            return GlobalObjects.MainCamera.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        public virtual void ShootCancel()
+        {
+        }
+
+        protected void BeginCoolDown()
+        {
+            StartCoroutine(StartCooldown());
+
+        }
         private IEnumerator StartCooldown()
         {
             _onCooldown = true;
             yield return new WaitForSeconds(_data.CoolDown);
             _onCooldown = false;
+            WeaponReady();
+        }
+        protected virtual void PlayOneShotSound()
+        {
+            EventHub.PlayOneShotSound(_data._FmodEvent);
+        }
+        protected virtual void WeaponReady()
+        {
+
         }
     }
 }

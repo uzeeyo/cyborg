@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public static class EventHub 
 {
@@ -92,6 +93,33 @@ public static class EventHub
     public static void InventoryClosed()
     {
         E_InventoryClosed?.Invoke();
+    }
+    #endregion
+
+    #region PlayOneShotSound
+    public static event Action<EventReference> E_PlayOneShotSound;
+
+    public static void PlayOneShotSound(EventReference reference)
+    {
+        E_PlayOneShotSound?.Invoke(reference);
+    }
+    #endregion
+
+    #region ModGamePlay
+    public static event Action E_ModGamePlay;
+
+    public static void ModGamePlay()
+    {
+        E_ModGamePlay?.Invoke();
+    }
+    #endregion
+
+    #region ModMenu
+    public static event Action E_ModMenu;
+
+    public static void ModMenu()
+    {
+        E_ModMenu?.Invoke();
     }
     #endregion
 

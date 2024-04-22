@@ -7,7 +7,7 @@ using UnityEngine.AI;
 namespace Cyborg.Enemies
 {
     [RequireComponent(typeof(NavMeshAgent), typeof(EnemyStateMachine))]
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, I_TakeDamage
     {
         private EnemyStateMachine _stateMachine;
         private NavMeshAgent _agent;
@@ -59,7 +59,7 @@ namespace Cyborg.Enemies
             }
         }
 
-        private void TakeDamage(float damage)
+        public void TakeDamage(float damage)
         {
             if (_stateMachine.CurrentState == EnemyStateType.Die) return;
 
@@ -74,14 +74,6 @@ namespace Cyborg.Enemies
         {
             _stateMachine.ChangeState(EnemyStateType.Die);
             EnemyDied?.Invoke(_enemyType);
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.TryGetComponent(out Projectile projectile))
-            {
-                TakeDamage(projectile.Damage);
-            }
         }
     }
 }
