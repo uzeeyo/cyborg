@@ -5,7 +5,6 @@ namespace Cyborg.StateMachine
 {
     public abstract class EnemyState : IState
     {
-
         public EnemyState(EnemyStateMachine stateMachine, Enemy enemy, PlayerMovement player)
         {
             _fsm = stateMachine;

@@ -1,4 +1,5 @@
 using Cyborg.Items;
+using Cyborg.UI;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,7 +10,7 @@ namespace Cyborg.Player
     [RequireComponent(typeof(Image))]
     public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IDropHandler
     {
-        const float HIGHLIGHT_AMOUNT = 0.7f;
+        const float HIGHLIGHT_AMOUNT = 0.4f;
 
         private Image _background;
         private Inventory _inventory;
@@ -19,6 +20,7 @@ namespace Cyborg.Player
         private Guid _idToClear;
         private Color _originalColor;
         private Guid _itemIdInSlot;
+        private ItemWindow _itemWindow;
 
         public bool Empty
         {
@@ -35,6 +37,7 @@ namespace Cyborg.Player
         {
             _background = GetComponent<Image>();
             _originalColor = _background.color;
+            _itemWindow = GetComponentInParent<ItemWindow>();
         }
 
         public void Init(Inventory inventory, GridCoordinate position)
@@ -78,13 +81,13 @@ namespace Cyborg.Player
         public bool Drop()
         {
             _inventory.Unhiglight();
-            var item = _inventory.ItemToDrop;
+            var item = _itemWindow.ItemToDrop;
             if (item.InInventory && _inventory.TryMoveItem(item, _position))
             {
                 Debug.Log("Item moved.");
                 item.Moved = true;
                 item.transform.SetParent(transform);
-                Inventory.Instance.PlaceItemInWindow(item);
+                _itemWindow.PlaceItemInWindow(item);
                 return true;
             }
 
@@ -94,7 +97,7 @@ namespace Cyborg.Player
 
                 item.EndPlacement();
                 item.transform.SetParent(transform);
-                Inventory.Instance.PlaceItemInWindow(item);
+                _itemWindow.PlaceItemInWindow(item);
                 Destroy(item.WorldItem.gameObject);
                 item.WorldItem = null;
                 return true;
@@ -108,7 +111,7 @@ namespace Cyborg.Player
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (_inventory.ItemToDrop != null && Empty)
+            if (_itemWindow.ItemToDrop != null && Empty)
             {
                 _inventory.Unhiglight();
             }
@@ -116,15 +119,15 @@ namespace Cyborg.Player
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (_inventory.ItemToDrop != null && Empty)
+            if (_itemWindow.ItemToDrop != null && Empty)
             {
-                _inventory.Highlight(_position, _inventory.ItemToDrop.Size);
+                _inventory.Highlight(_position, _itemWindow.ItemToDrop.Size);
             }
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (_inventory.ItemToDrop != null && Empty)
+            if (_itemWindow.ItemToDrop != null && Empty)
             {
                 _inventory.Unhiglight();
                 Drop();

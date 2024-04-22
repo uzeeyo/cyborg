@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 64
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -145,7 +145,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 815969605c9dd904c9209b1bee3a0222
+      spriteID: ab7ffe2271c67f3459492e1701e67abf
       internalID: 49374575
       vertices: []
       indices: 
@@ -153,6 +153,27 @@ TextureImporter:
       weights: []
     - serializedVersion: 2
       name: Stone1_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c236f3cdede77d478c1d55d6ab00156
+      internalID: -1150620115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone1_3
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b9a911da7cdcba4b9b6d2e728dd3695
-      internalID: -1150620115
+      spriteID: 93ab3094931d47148873f61eb7383720
+      internalID: -622105799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stone1_3
+      name: Stone1_4
       rect:
         serializedVersion: 2
         x: 32
@@ -187,8 +208,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bcdffa7a6076fc4283bd355dd4dbfd5
-      internalID: -622105799
+      spriteID: 47f34b91beb9e334aa14f94a8d1d6bdd
+      internalID: -1946765427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone1_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2151ee40bcaa266428c5b05f5604c0b0
+      internalID: -1293318138
       vertices: []
       indices: 
       edges: []
@@ -208,6 +250,8 @@ TextureImporter:
       Stone1_1: 49374575
       Stone1_2: -1150620115
       Stone1_3: -622105799
+      Stone1_4: -1946765427
+      Stone1_5: -1293318138
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

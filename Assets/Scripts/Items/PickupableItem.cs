@@ -1,27 +1,28 @@
 using Cyborg.Player;
+using Cyborg.UI;
 using UnityEngine;
 
 namespace Cyborg.Items
 {
     public class PickupableItem : MonoBehaviour
     {
+        private ItemWindow _itemWindow;
         private InventoryItem _iconObj;
 
         public Item Item { get; private set; }
-        public InventoryItem Icon => _iconObj;
 
         private void Awake()
         {
             Item = GetComponent<Item>();
+            _itemWindow = FindObjectOfType<ItemWindow>();
         }
 
         public void PickUp()
         {
-            Inventory.Instance.Open();
-            _iconObj = Inventory.Instance.CreateInventoryItem(Item);
+            _itemWindow.Open();
+            _iconObj = _itemWindow.CreateInventoryItem(Item);
 
             Inventory.Instance.ToggleItemRaycasts();
-            Inventory.Instance.ItemToDrop = _iconObj;
 
             InputUI.Instance.E_Cancel += CancelPickup;
         }
@@ -34,8 +35,13 @@ namespace Cyborg.Items
                 Destroy(_iconObj.gameObject);
             }
 
-            Inventory.Instance.Close();
+            _itemWindow.Close();
             StopAllCoroutines();
+        }
+
+        private void OnDestroy()
+        {
+            InputUI.Instance.E_Cancel -= CancelPickup;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

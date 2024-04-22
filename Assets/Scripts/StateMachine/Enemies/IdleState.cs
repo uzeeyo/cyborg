@@ -9,6 +9,7 @@ namespace Cyborg.StateMachine
         private float _timeToRotate;
         private float _waitTime;
         private bool _waiting;
+        private PlayerFinder _playerFinder;
 
         public IdleState(EnemyStateMachine stateMachine, Enemy enemy, PlayerMovement player) : base(stateMachine, enemy, player)
         {
@@ -18,6 +19,7 @@ namespace Cyborg.StateMachine
         {
             base.Enter();
             ResetRotation();
+            _playerFinder = _enemy.GetComponent<PlayerFinder>();
         }
 
         public override void Exit()
@@ -27,9 +29,9 @@ namespace Cyborg.StateMachine
 
         public override void Tick()
         {
-            if (Vector3.Distance(_enemy.transform.position, _player.transform.position) < _enemy.DetectionRange)
+            if (_playerFinder.PlayerIsVisible())
             {
-                _fsm.ChangeState(EnemyStateType.Follow);
+                _fsm.ChangeState(EnemyStateType.Chase);
             }
 
             float timeSinceLastRotate = Time.time - _startTime;

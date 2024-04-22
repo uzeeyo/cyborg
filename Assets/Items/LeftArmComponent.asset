@@ -15,8 +15,8 @@ MonoBehaviour:
   _itemName: Left arm part
   _description: none
   _size:
-    x: 0
-    y: 0
+    x: 1
+    y: 1
   _sprite: {fileID: 21300000, guid: d827346e5f4b2f74188adb06f1321b5d, type: 3}
   _itemType: 0
   _energyCost: 0

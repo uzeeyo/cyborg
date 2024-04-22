@@ -4,7 +4,9 @@ namespace Cyborg.StateMachine
     {
         Idle,
         Patrol,
-        Follow,
+        Scan,
+        TravelToDetected,
+        Chase,
         Attack,
         Die
     }
