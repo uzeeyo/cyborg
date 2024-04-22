@@ -37,6 +37,7 @@ namespace Cyborg.Enemies
         private void Start()
         {
             StartCoroutine(SpawnEnemies());
+
         }
 
         public void CreateEnemy(EnemyType enemyType)
@@ -49,8 +50,8 @@ namespace Cyborg.Enemies
                 _ => Instantiate(_scout)
             };
 
-            var randomDistance = Random.Range(15, 20);
-            var randomPosition = Random.insideUnitSphere * randomDistance;
+            var randomDistance = Random.Range(13, 18);
+            var randomPosition = Random.insideUnitSphere.normalized * randomDistance;
             var spawnPosition = _player.transform.position + new Vector3(randomPosition.x, randomPosition.y, 0);
 
             enemy.transform.position = spawnPosition;

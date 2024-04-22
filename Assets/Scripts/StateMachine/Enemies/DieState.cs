@@ -13,6 +13,7 @@ namespace Cyborg.StateMachine
         {
             base.Enter();
             _enemy.Agent.isStopped = true;
+            _enemy.GetComponent<Collider2D>().enabled = false;
         }
 
         public override void Exit()
