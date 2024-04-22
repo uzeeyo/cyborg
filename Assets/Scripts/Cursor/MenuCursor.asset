@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c61b543291e12b4f85b336b1eda5a94, type: 3}
   m_Name: MenuCursor
   m_EditorClassIdentifier: 
-  <cursorTexture>k__BackingField: {fileID: 2800000, guid: 651c1baeecadf694284950c802cddcbf, type: 3}
+  <cursorTexture>k__BackingField: {fileID: 2800000, guid: dddf4052e7f6d33468a48fab0823d392, type: 3}
   <hotSpot>k__BackingField: {x: 0, y: 0}
