@@ -123,5 +123,14 @@ public static class EventHub
     }
     #endregion
 
+    #region PlayerDash
+    public static event Action E_PlayerDash;
+
+    public static void PlayerDash()
+    {
+        E_PlayerDash?.Invoke();
+    }
+    #endregion
+
 
 }
