@@ -25,8 +25,8 @@ MonoBehaviour:
   HitEffecddt: {fileID: 1063916859749532868, guid: 4c712898dbb3c3145a2843c7c63c9e65, type: 3}
   _FmodEvent:
     Guid:
-      Data1: -467281640
-      Data2: 1165425942
-      Data3: -1376407661
-      Data4: 311790844
-    Path: event:/Weapon/PlasmaWeapon
+      Data1: 1401240718
+      Data2: 1214993174
+      Data3: -1052801095
+      Data4: -1985014644
+    Path: event:/SFX/Player Character/Weapon 2
