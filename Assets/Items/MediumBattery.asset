@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3268892ab700e7b46967f4912b1dccea, type: 3}
-  m_Name: LeftArmComponent
+  m_Name: MediumBattery
   m_EditorClassIdentifier: 
-  _itemName: Left arm part
-  _description: none
+  _itemName: Battery (M)
+  _description: Use to store a medium amount of power.
   _size:
     x: 1
-    y: 1
-  _sprite: {fileID: 21300000, guid: d827346e5f4b2f74188adb06f1321b5d, type: 3}
-  _itemType: 0
+    y: 2
+  _sprite: {fileID: 21300000, guid: 11ac947b019207c42896fbafad21bb1d, type: 3}
+  _itemType: 1
   _energyCost: 0
-  _slotType: 2
+  _slotType: 0
