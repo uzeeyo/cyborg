@@ -18,11 +18,11 @@ MonoBehaviour:
       Data2: 1176772108
       Data3: -457403749
       Data4: 2031451627
-    Path: event:/Inventory/InventoryOpen
+    Path: event:/SFX/UI/InventoryOpen
   InventoryClosedEventReference:
     Guid:
       Data1: 696978582
       Data2: 1184118516
       Data3: -754367339
       Data4: 1534408508
-    Path: event:/Inventory/InventoryClose
+    Path: event:/SFX/UI/InventoryClose

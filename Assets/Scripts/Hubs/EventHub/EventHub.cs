@@ -123,5 +123,33 @@ public static class EventHub
     }
     #endregion
 
+    #region Ambiance
+    public static event Action<E_Ambiance> E_Ambiance;
+
+    public static void Ambiance(E_Ambiance ambiance)
+    {
+        E_Ambiance?.Invoke(ambiance);
+    }
+    #endregion
+
+    #region PlayerDash
+    public static event Action E_PlayerDash;
+
+    public static void PlayerDash()
+    {
+        E_PlayerDash?.Invoke();
+    }
+    #endregion
+
+    #region Ambiance
+    public static event Action<E_Music> E_Music;
+
+    public static void Music(E_Music music)
+    {
+        E_Music?.Invoke(music);
+    }
+    #endregion
+
+
 
 }

@@ -18,4 +18,4 @@ MonoBehaviour:
       Data2: 1233015894
       Data3: 1076861356
       Data4: -1673938271
-    Path: event:/Player/PlayerDeath
+    Path: event:/SFX/Player Character/PlayerDeath

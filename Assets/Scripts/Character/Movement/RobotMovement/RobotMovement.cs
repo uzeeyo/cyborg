@@ -47,6 +47,8 @@ public class RobotMovement : MonoBehaviour
 
         Invoke("DashEnd", model.DashTime);
 
+        EventHub.PlayerDash();
+
     }
     private void Dash()
     {
