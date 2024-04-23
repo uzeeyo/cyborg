@@ -141,7 +141,14 @@ public static class EventHub
     }
     #endregion
 
+    #region Ambiance
+    public static event Action<E_Music> E_Music;
 
+    public static void Music(E_Music music)
+    {
+        E_Music?.Invoke(music);
+    }
+    #endregion
 
 
 
