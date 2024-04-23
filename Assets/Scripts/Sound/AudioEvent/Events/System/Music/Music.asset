@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fca2c659b247d6043821b55b8b03041b, type: 3}
-  m_Name: System_AE_Holder
+  m_Script: {fileID: 11500000, guid: abd5e0b196f77eb43bdef315d1bd3845, type: 3}
+  m_Name: Music
   m_EditorClassIdentifier: 
-  events:
-  - {fileID: 11400000, guid: 10c4bc5c8d9f04d4f906780125837764, type: 2}
-  - {fileID: 11400000, guid: 68825828681879e42af2899150a1615c, type: 2}
+  musics:
+  - e_Music: 2
+    reference:
+      Guid:
+        Data1: -610500640
+        Data2: 1247662948
+        Data3: 1418975631
+        Data4: 601162967
+      Path: event:/Music/LVL1
