@@ -25,6 +25,7 @@ public class AE_Ambiance : AudioEvent
         if (ambiance == E_Ambiance.stop)
         {
             ForgetCurrentSound();
+            currentAmbiance = ambiance;
         }
         else
         {
