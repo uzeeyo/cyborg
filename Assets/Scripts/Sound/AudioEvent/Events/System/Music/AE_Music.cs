@@ -25,6 +25,7 @@ public class AE_Music : AudioEvent
         if (music == E_Music.stop)
         {
             ForgetCurrentSound();
+            currentMusic = music;
         }
         else
         {
