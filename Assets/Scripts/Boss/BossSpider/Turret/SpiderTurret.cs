@@ -10,6 +10,14 @@ public class SpiderTurret : MonoBehaviour
 
     private float LerpSpeed = 1;
 
+    [Range(-90, 90)]
+    [SerializeField] private float TurretRotation;
+
+    private void Update()
+    {
+        transform.localRotation = Quaternion.Euler(new Vector3(0, 0, TurretRotation));
+    }
+
     public void SetTargetRotation(Quaternion targetRotation)
     {
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, LerpSpeed);

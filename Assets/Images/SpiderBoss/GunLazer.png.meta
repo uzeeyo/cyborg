@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 096fc8a1ae034924ebad2a0043b8d3a4
+guid: 223d049886ef9a244b9f4ce22fde5684
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RocketExplosion_0
+      name: GunLazer_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbfc848ec9c83c44cba7141791dbbc87
-      internalID: -798182198
+      spriteID: 6542e00292bae10489af9b14ae53ae4c
+      internalID: 1379369117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_1
+      name: GunLazer_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 15
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a67f65d3d5dd5f44a5205b13a88c2c2
-      internalID: -686490928
+      spriteID: 205458c7d7dd92b44ae5f3ce8ae1a331
+      internalID: -1640203077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_2
+      name: GunLazer_2
       rect:
         serializedVersion: 2
-        x: 256
+        x: 30
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aac6b3f5245026d49937c15f9d6bdb62
-      internalID: 918463228
+      spriteID: f9e4d72f9937b824895704756a4b6909
+      internalID: -1134942220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_3
+      name: GunLazer_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 45
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca31abc9f34a8134c9000387528105ea
-      internalID: -595638822
+      spriteID: 95cef5b7e54759d448a89962221c160d
+      internalID: -936712067
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_4
+      name: GunLazer_4
       rect:
         serializedVersion: 2
-        x: 512
+        x: 60
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffa7e40ed6e117242a1e0970f057c771
-      internalID: 450121435
+      spriteID: 5949c36163cbaa34f80e0a4a17f26314
+      internalID: 1596373525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_5
+      name: GunLazer_5
       rect:
         serializedVersion: 2
-        x: 640
+        x: 75
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31435aaa847a2934385111d5da62e6e9
-      internalID: -507692323
+      spriteID: e7abbeeaf82592448872b557bb902ff1
+      internalID: 105706498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_6
+      name: GunLazer_6
       rect:
         serializedVersion: 2
-        x: 768
+        x: 90
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6dcd4ed671c2fd642a05c86409086bc6
-      internalID: -459869893
+      spriteID: e1f853be492095249b698a62c297d0a7
+      internalID: -345510501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_7
+      name: GunLazer_7
       rect:
         serializedVersion: 2
-        x: 896
+        x: 105
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f44e2cc9185375469d5b68df1c8fc4f
-      internalID: 850409689
+      spriteID: c3549fd69ab90d64fa3afa377cc417a9
+      internalID: -425790671
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_8
+      name: GunLazer_8
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 120
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bc667cf82e35af4eaeb3c7f0a1ced83
-      internalID: 1696820307
+      spriteID: c09f4f9e834393c4484cc61893dbb236
+      internalID: 1754272425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_9
+      name: GunLazer_9
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 135
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a278e2d59e0a864db5c336dc0f15205
-      internalID: -948706952
+      spriteID: 307c84d1a99b31944bd30228481b3eb3
+      internalID: -1915342003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_10
+      name: GunLazer_10
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 150
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e472a576da1906469ea7c71490f097d
-      internalID: 1758510471
+      spriteID: 190736df48978e54fae48e09681945dd
+      internalID: 1433892132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RocketExplosion_11
+      name: GunLazer_11
       rect:
         serializedVersion: 2
-        x: 1408
+        x: 165
         y: 0
-        width: 128
-        height: 128
+        width: 15
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,50 +355,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd3575c7cd4c72046a9bf6592243f11d
-      internalID: 1378183427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RocketExplosion_12
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dcf611c3a21281a409e281c088fdf2c8
-      internalID: -1860628605
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RocketExplosion_13
-      rect:
-        serializedVersion: 2
-        x: 1664
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ae1cc7d1a6cf55448f764202279c06e
-      internalID: 287162451
+      spriteID: 1294b130e4e1e184d954bbaf4b77e783
+      internalID: -1357011482
       vertices: []
       indices: 
       edges: []
@@ -414,20 +372,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RocketExplosion_0: -798182198
-      RocketExplosion_1: -686490928
-      RocketExplosion_10: 1758510471
-      RocketExplosion_11: 1378183427
-      RocketExplosion_12: -1860628605
-      RocketExplosion_13: 287162451
-      RocketExplosion_2: 918463228
-      RocketExplosion_3: -595638822
-      RocketExplosion_4: 450121435
-      RocketExplosion_5: -507692323
-      RocketExplosion_6: -459869893
-      RocketExplosion_7: 850409689
-      RocketExplosion_8: 1696820307
-      RocketExplosion_9: -948706952
+      GunLazer_0: 1379369117
+      GunLazer_1: -1640203077
+      GunLazer_10: 1433892132
+      GunLazer_11: -1357011482
+      GunLazer_2: -1134942220
+      GunLazer_3: -936712067
+      GunLazer_4: 1596373525
+      GunLazer_5: 105706498
+      GunLazer_6: -345510501
+      GunLazer_7: -425790671
+      GunLazer_8: 1754272425
+      GunLazer_9: -1915342003
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
