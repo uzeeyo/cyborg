@@ -8,6 +8,7 @@ public class PhaseFall : BossPhase
     [SerializeField] string str;
     public override void Begin(BossPhaseManager bossPhaseManager)
     {
+        Debug.Log("Go");
         base.Begin(bossPhaseManager);
     }
     public override void Tick()
