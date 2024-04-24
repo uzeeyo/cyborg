@@ -578,7 +578,6 @@ MonoBehaviour:
     endHealthRate: 0.912
   - bossPhase: {fileID: 11400000, guid: 5c25404f7065861409bd914fa1a17e8b, type: 2}
     endHealthRate: 0
-  <spiderTurret>k__BackingField: {fileID: 1896214136}
 --- !u!4 &177349392
 Transform:
   m_ObjectHideFlags: 0
