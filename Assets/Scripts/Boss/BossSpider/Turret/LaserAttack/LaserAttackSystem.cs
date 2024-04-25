@@ -7,7 +7,7 @@ public class LaserAttackSystem : MonoBehaviour
 {
     public Action AttackEnded;
     private float AnimWaitTime = 1.2f;
-    private float ActionTime = 1.5f;
+    private float ActionTime = 0.9f;
     [SerializeField] private GameObject Laser;
     private Animator animator;
     private SpiderTurret spiderTurret;
@@ -25,6 +25,7 @@ public class LaserAttackSystem : MonoBehaviour
     IEnumerator Operations()
     {
         animator.SetTrigger("Laser");
+        StartCoroutine(BeginingTurretMove());
         yield return new WaitForSeconds(AnimWaitTime);
         Laser.SetActive(true);
 
@@ -34,19 +35,34 @@ public class LaserAttackSystem : MonoBehaviour
             timer += Time.deltaTime;
             if(timer > ActionTime)
             {
-                spiderTurret.LaserRate(0.5f);
+                spiderTurret.SetLaserRate(0.5f);
                 break;
             }
             float rate = timer / ActionTime;
-            spiderTurret.LaserRate(rate - 0.5f);
+            spiderTurret.SetLaserRate(rate - 0.5f);
             yield return null;
         }
  
         animator.SetTrigger("End");
         Laser.SetActive(false);
+        spiderTurret.SetLaserRate(0);
         yield return new WaitForSeconds(AnimWaitTime);
         End();
     }
+
+    IEnumerator BeginingTurretMove()
+    {
+        yield return new WaitForSeconds(AnimWaitTime * 0.9f);
+        float timer = 0f;
+        while (timer < AnimWaitTime) 
+        {
+            timer += Time.deltaTime * 10f;
+            timer = Mathf.Min(timer, AnimWaitTime);
+            spiderTurret.SetLaserRate(-0.5f * (timer / AnimWaitTime));
+            yield return null;
+        }
+    }
+    
     private void End()
     {
         AttackEnded?.Invoke();
