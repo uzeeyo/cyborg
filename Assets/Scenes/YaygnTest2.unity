@@ -17725,6 +17725,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3614fef4902bc694cb12474c73850588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventReference:
+    Guid:
+      Data1: 956952307
+      Data2: 1106103860
+      Data3: -43471437
+      Data4: 1737474161
+    Path: event:/SFX/Boss/Attack 3 Lazor Sweep
   Laser: {fileID: 2031573266}
 --- !u!114 &1512107033
 MonoBehaviour:
