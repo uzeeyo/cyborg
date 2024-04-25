@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4514f92b3c609a45813ac68c3135bd5, type: 3}
-  m_Name: New AE_Ambiance
+  m_Name: Ambiance
   m_EditorClassIdentifier: 
   ambiances:
   - e_Ambiance: 1
