@@ -17775,6 +17775,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42af011b3722cc5498e5072885b26b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventReference:
+    Guid:
+      Data1: -397195642
+      Data2: 1334726520
+      Data3: -1048363613
+      Data4: 1351185458
+    Path: event:/SFX/Boss/Attack 2 Missile
   prefabMissile: {fileID: 5593391224041030676, guid: 876ce8148810e01458c1be73db8398e5, type: 3}
 --- !u!1 &1520872557
 GameObject:

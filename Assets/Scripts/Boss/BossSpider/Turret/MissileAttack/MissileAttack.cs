@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 public class MissileAttack : MonoBehaviour
 {
+    [SerializeField] EventReference eventReference;
     [SerializeField] private SpiderMissile prefabMissile;
     public Action AttackEnded;
     private Animator animator;
@@ -19,6 +21,7 @@ public class MissileAttack : MonoBehaviour
     }
     public void Begin()
     {
+        EventHub.PlayOneShotSound(eventReference);
         StartCoroutine(Operations());
         Ammo = MaxAmmo;
         SpiderMissile.Count = 0;
