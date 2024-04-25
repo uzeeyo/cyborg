@@ -1,11 +1,13 @@
+using Cyborg.Items;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SpiderPlasmaAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject PlasmaPrefab;
+    [SerializeField] private Projectile PlasmaPrefab;
     [SerializeField] private Transform FireStartTransform;
     [SerializeField] private float FireCoolDown;
 
@@ -17,7 +19,7 @@ public class SpiderPlasmaAttack : MonoBehaviour
     {
         playerTransform = GlobalObjects.Player.transform;
         Continue = true;
-        ammo = 3;
+        ammo = 40;
         StartCoroutine(FireMod());
     }
 
@@ -36,6 +38,17 @@ public class SpiderPlasmaAttack : MonoBehaviour
 
     private void Fire()
     {
+        Projectile bullet = Instantiate(PlasmaPrefab, FireStartTransform.position, Quaternion.LookRotation(Vector3.forward, transform.up));
+        bullet.SetDirection(SelectRotation());
+        //bullet.SetDirection(transform.up);
+    }
+
+    private Vector3 SelectRotation()
+    {
+        float Randomize = 30;
+        Quaternion randomRotation = Quaternion.AngleAxis(UnityEngine.Random.Range(-Randomize, Randomize), Vector3.forward);
+        Vector3 randomUp = randomRotation * transform.up;
+        return randomUp;
     }
 
     private void CheckAmmo()

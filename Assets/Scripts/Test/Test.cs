@@ -12,7 +12,7 @@ public class Test : MonoBehaviour
     [SerializeField] BossHealth damage;
     void Start()
     {
-        Invoke("RemoveHealth", 5);
+        //Invoke("RemoveHealth", 5);
     }
 
     // Update is called once per frame
@@ -45,6 +45,14 @@ public class Test : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.CompareTag("Player"))
+        {
+
+        }
+    }
     private void RemoveHealth()
     {
         //EventHub.Ambiance(E_Ambiance.EnvironmentalNoise);

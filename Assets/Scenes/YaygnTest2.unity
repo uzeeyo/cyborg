@@ -752,7 +752,7 @@ Transform:
   m_GameObject: {fileID: 177349390}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -12.52, y: 2.24, z: 0}
+  m_LocalPosition: {x: -12.52, y: -3.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1611,7 +1611,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.81, y: -1.1, z: -10}
+  m_LocalPosition: {x: -11.81, y: -6.45, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17455,7 +17455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1367382174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17648,7 +17648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlasmaPrefab: {fileID: 7135922567869893804, guid: af9c866e05c46ad4cb3b5728ac71b434, type: 3}
   FireStartTransform: {fileID: 553979360}
-  FireCoolDown: 0.1
+  FireCoolDown: 0.2
 --- !u!114 &1512107034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18145,7 +18145,7 @@ Transform:
   m_GameObject: {fileID: 1587900650}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.81, y: -1.1, z: 0}
+  m_LocalPosition: {x: -11.81, y: -6.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20106,8 +20106,8 @@ Transform:
   m_GameObject: {fileID: 2092924172}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: 3.6, z: 0}
+  m_LocalScale: {x: 0.5, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2031573267}

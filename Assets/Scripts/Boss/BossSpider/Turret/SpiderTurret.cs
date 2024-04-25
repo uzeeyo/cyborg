@@ -45,11 +45,18 @@ public class SpiderTurret : MonoBehaviour
 
     private void LookAtPlayer()
     {
-        CurrentRot = Vector3.Lerp(CurrentRot, (GlobalObjects.Player.transform.position - transform.position).normalized, LerpSpeed * Time.deltaTime);
+        //(GlobalObjects.Player.transform.position - transform.position).normalized;
+        //Vector3.Lerp(CurrentRot, (GlobalObjects.Player.transform.position - transform.position).normalized, LerpSpeed * Time.deltaTime);
+        CurrentRot =  Vector3.Lerp(CurrentRot, (CalculateWherePlayerIsGoing() - (Vector2)transform.position).normalized, LerpSpeed * Time.deltaTime);
         transform.up = Quaternion.Euler(0, 0, LaserRate * TurretRotation) * CurrentRot;
     }
     private void LaserRotSet()
     {
         transform.up = Quaternion.Euler(0, 0, LaserRate * TurretRotation) * LaserCenterRot;
+    }
+
+    private Vector2 CalculateWherePlayerIsGoing()
+    {
+        return RobotMovement.PlayerSpeed * 0.5f + (Vector2)GlobalObjects.Player.transform.position;
     }
 }
