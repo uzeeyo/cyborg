@@ -20,8 +20,8 @@ public class SpiderExplossion : Explosive
             I_TakeDamage IsDamagable = collider.GetComponent<I_TakeDamage>();
             if (IsDamagable != null)
             {
-                if( "SpiderLayer" !=LayerMask.LayerToName(collider.gameObject.layer))
-                     damagables.Add(IsDamagable);
+                if ("SpiderLayer" != LayerMask.LayerToName(collider.gameObject.layer))
+                    IsDamagable.TakeDamage(data.Damage);
             }
         }
         Destroy(gameObject);
