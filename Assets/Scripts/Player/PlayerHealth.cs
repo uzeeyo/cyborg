@@ -35,6 +35,6 @@ public class PlayerHealth : MonoBehaviour, I_TakeDamage
 
     public void TakeDamage(float damage)
     {
-        print("PlayerRecieveDamage " + damage);
+        EnergyManager.Instance.RemoveEnergy(damage);
     }
 }
