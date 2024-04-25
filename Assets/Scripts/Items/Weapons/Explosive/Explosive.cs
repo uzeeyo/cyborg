@@ -28,6 +28,7 @@ public class Explosive : MonoBehaviour
         {
             damagable.TakeDamage(data.Damage);
         }
+        PlaySound();
         Destroy(gameObject);
     }
 
@@ -45,5 +46,10 @@ public class Explosive : MonoBehaviour
             }
         }
         return damagables.ToArray();
+    }
+
+    protected void PlaySound()
+    {
+        EventHub.Explosion();
     }
 }

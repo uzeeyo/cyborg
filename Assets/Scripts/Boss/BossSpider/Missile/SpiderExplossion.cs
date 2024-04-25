@@ -24,6 +24,7 @@ public class SpiderExplossion : Explosive
                     IsDamagable.TakeDamage(data.Damage);
             }
         }
+        PlaySound();
         Destroy(gameObject);
     }
     
