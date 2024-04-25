@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using FMODUnity;
 
 public class LaserAttackSystem : MonoBehaviour
 {
+    [SerializeField] EventReference eventReference;
     public Action AttackEnded;
     private float AnimWaitTime = 1.2f;
     private float ActionTime = 0.9f;
@@ -19,6 +21,7 @@ public class LaserAttackSystem : MonoBehaviour
     }
     public void Begin()
     {
+        EventHub.PlayOneShotSound(eventReference);
         StartCoroutine(Operations());
     }
 

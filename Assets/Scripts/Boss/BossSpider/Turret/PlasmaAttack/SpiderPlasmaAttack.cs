@@ -1,4 +1,5 @@
 using Cyborg.Items;
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ public class SpiderPlasmaAttack : MonoBehaviour
     private bool Continue;
     private short ammo;
     public Action AttackEnded;
+    [SerializeField] EventReference WeaponSound;
     public void Begin()
     {
         playerTransform = GlobalObjects.Player.transform;
@@ -40,6 +42,7 @@ public class SpiderPlasmaAttack : MonoBehaviour
     {
         Projectile bullet = Instantiate(PlasmaPrefab, FireStartTransform.position, Quaternion.LookRotation(Vector3.forward, transform.up));
         bullet.SetDirection(SelectRotation());
+        EventHub.PlayOneShotSound(WeaponSound);
         //bullet.SetDirection(transform.up);
     }
 

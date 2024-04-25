@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 public class MissileAttack : MonoBehaviour
 {
+    [SerializeField] EventReference eventReference;
     [SerializeField] private SpiderMissile prefabMissile;
     public Action AttackEnded;
     private Animator animator;
@@ -29,6 +31,7 @@ public class MissileAttack : MonoBehaviour
         yield return new WaitForSeconds(AnimationTime);
         while(Ammo > 0)
         {
+            EventHub.PlayOneShotSound(eventReference);
             Ammo--;
             Instantiate(prefabMissile,transform.position,Quaternion.identity);
             yield return new WaitForSeconds(CoolDown);
