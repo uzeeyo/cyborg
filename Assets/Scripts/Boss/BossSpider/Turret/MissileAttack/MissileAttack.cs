@@ -21,7 +21,6 @@ public class MissileAttack : MonoBehaviour
     }
     public void Begin()
     {
-        EventHub.PlayOneShotSound(eventReference);
         StartCoroutine(Operations());
         Ammo = MaxAmmo;
         SpiderMissile.Count = 0;
@@ -32,6 +31,7 @@ public class MissileAttack : MonoBehaviour
         yield return new WaitForSeconds(AnimationTime);
         while(Ammo > 0)
         {
+            EventHub.PlayOneShotSound(eventReference);
             Ammo--;
             Instantiate(prefabMissile,transform.position,Quaternion.identity);
             yield return new WaitForSeconds(CoolDown);
