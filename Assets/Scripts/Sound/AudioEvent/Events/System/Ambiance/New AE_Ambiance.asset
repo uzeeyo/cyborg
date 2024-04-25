@@ -10,18 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4514f92b3c609a45813ac68c3135bd5, type: 3}
-  m_Name: Ambiance
+  m_Name: New AE_Ambiance
   m_EditorClassIdentifier: 
   ambiances:
   - e_Ambiance: 1
-    reference:
-      Guid:
-        Data1: 671440826
-        Data2: 1101968819
-        Data3: 429987751
-        Data4: -1413730838
-      Path: event:/Ambiances/Background warzone
-  - e_Ambiance: 2
     reference:
       Guid:
         Data1: 1698279866
@@ -29,11 +21,11 @@ MonoBehaviour:
         Data3: 1361209784
         Data4: -1704551529
       Path: event:/Ambiances/Environmental noise
-  - e_Ambiance: 3
+  - e_Ambiance: 2
     reference:
       Guid:
-        Data1: 104510004
-        Data2: 1298780679
-        Data3: -759694684
-        Data4: -1310832917
-      Path: event:/Ambiances/MainMenu
+        Data1: 671440826
+        Data2: 1101968819
+        Data3: 429987751
+        Data4: -1413730838
+      Path: event:/Ambiances/IntroCutscene

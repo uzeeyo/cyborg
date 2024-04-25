@@ -18,31 +18,7 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Stop)
-        {
-            Stop = false;
-            EventHub.Ambiance(E_Ambiance.stop);
-        }
-        if (Environment)
-        {
-            Environment = false;
-            EventHub.Ambiance(E_Ambiance.EnvironmentalNoise);
-        }
-        if (War)
-        {
-            War = false;
-            EventHub.Ambiance(E_Ambiance.BackgroundWarZone);
-        }
-        if (Stop2)
-        {
-            Stop2 = false;
-            EventHub.Music(E_Music.stop);
-        }
-        if (LevelMusic)
-        {
-            LevelMusic = false;
-            EventHub.Music(E_Music.LVL1);
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
