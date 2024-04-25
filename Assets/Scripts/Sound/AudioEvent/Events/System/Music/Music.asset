@@ -13,6 +13,14 @@ MonoBehaviour:
   m_Name: Music
   m_EditorClassIdentifier: 
   musics:
+  - e_Music: 1
+    reference:
+      Guid:
+        Data1: -1432428312
+        Data2: 1087648991
+        Data3: -1166163521
+        Data4: -1409518621
+      Path: event:/Music/Boss
   - e_Music: 2
     reference:
       Guid:
@@ -21,3 +29,11 @@ MonoBehaviour:
         Data3: 1418975631
         Data4: 601162967
       Path: event:/Music/LVL1
+  - e_Music: 3
+    reference:
+      Guid:
+        Data1: -252794631
+        Data2: 1181514558
+        Data3: 1988459392
+        Data4: -1615322767
+      Path: event:/Music/MainMenu
