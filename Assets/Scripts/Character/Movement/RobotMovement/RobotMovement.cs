@@ -7,6 +7,8 @@ public class RobotMovement : MonoBehaviour
 
     public event Action<Vector2> MovedWithSpeedOf;
 
+    public static  Vector2 PlayerSpeed { get; private set; }
+
     private void Start()
     {
         model.SpeedCurrent = model.SpeedNormal;
@@ -30,6 +32,8 @@ public class RobotMovement : MonoBehaviour
         model.rb.MovePosition(model.rb.position + model.DesiredDirection * model.SpeedCurrent * Time.fixedDeltaTime);
 
         MovedWithSpeedOf?.Invoke(model.DesiredDirection * model.SpeedCurrent);
+
+        PlayerSpeed = model.DesiredDirection * model.SpeedCurrent;
     }
 
     private void Rotate()
