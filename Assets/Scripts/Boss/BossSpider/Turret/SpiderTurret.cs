@@ -11,21 +11,45 @@ public class SpiderTurret : MonoBehaviour
 
     [HideInInspector] public float LaserRate;
     private Vector3 CurrentRot;
+    private Vector3 LaserCenterRot;
+    private bool IsLaserTime;
 
     private void Update()
     {
-        LookAtPlayer();
+        if (IsLaserTime)
+        {
+            LaserRotSet();
+        }
+        else
+        {
+            LookAtPlayer();
+        }
     }
 
+    public void LaserTime(bool IsTime)
+    {
+        IsLaserTime = IsTime;
+        if(!IsLaserTime)
+        {
+            return;
+        }
+
+        LaserCenterRot = Vector3.Lerp(CurrentRot, (GlobalObjects.Player.transform.position - transform.position).normalized, LerpSpeed * Time.deltaTime);
+        
+
+    }
     public void SetLaserRate(float rate)
     {
         LaserRate = rate;
-        print(LaserRate);
     }
 
     private void LookAtPlayer()
     {
         CurrentRot = Vector3.Lerp(CurrentRot, (GlobalObjects.Player.transform.position - transform.position).normalized, LerpSpeed * Time.deltaTime);
         transform.up = Quaternion.Euler(0, 0, LaserRate * TurretRotation) * CurrentRot;
+    }
+    private void LaserRotSet()
+    {
+        transform.up = Quaternion.Euler(0, 0, LaserRate * TurretRotation) * LaserCenterRot;
     }
 }

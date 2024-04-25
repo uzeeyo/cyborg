@@ -27,6 +27,7 @@ public class LaserAttackSystem : MonoBehaviour
         animator.SetTrigger("Laser");
         StartCoroutine(BeginingTurretMove());
         yield return new WaitForSeconds(AnimWaitTime);
+        spiderTurret.LaserTime(true);
         Laser.SetActive(true);
 
         float timer = 0;
@@ -46,6 +47,7 @@ public class LaserAttackSystem : MonoBehaviour
         animator.SetTrigger("End");
         Laser.SetActive(false);
         spiderTurret.SetLaserRate(0);
+        spiderTurret.LaserTime(false);
         yield return new WaitForSeconds(AnimWaitTime);
         End();
     }
