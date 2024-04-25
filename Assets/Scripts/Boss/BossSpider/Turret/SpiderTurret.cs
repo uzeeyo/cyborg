@@ -3,59 +3,29 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum E_SpiderTurretPhases { none, plasma, laser, missile}
 public class SpiderTurret : MonoBehaviour
 {
-    private E_SpiderTurretPhases currentPhase = E_SpiderTurretPhases.none;
-
-    private float LerpSpeed = 1;
-
-    [Range(-90, 90)]
+    [Range(-120, 120)]
     [SerializeField] private float TurretRotation;
+    [SerializeField] private float LerpSpeed;
+
+    [HideInInspector] public float LaserRate;
+    private Vector3 CurrentRot;
 
     private void Update()
     {
-        transform.localRotation = Quaternion.Euler(new Vector3(0, 0, TurretRotation));
+        LookAtPlayer();
     }
 
-    public void SetTargetRotation(Quaternion targetRotation)
+    public void SetLaserRate(float rate)
     {
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, LerpSpeed);
-    }
-    public void ChangePhase(E_SpiderTurretPhases phase)
-    {
-        if (phase == currentPhase)
-            return;
-
-        currentPhase = phase;
-
-        switch (currentPhase)
-        {
-            case E_SpiderTurretPhases.plasma:
-                StartCoroutine(PlasmaPhase());
-                break;
-            case E_SpiderTurretPhases.laser:
-                StartCoroutine(LaserPhase());
-                break;
-            case E_SpiderTurretPhases.missile:
-                StartCoroutine(MissilePhase());
-                break;
-            default:
-                break;
-
-        }
+        LaserRate = rate;
+        print(LaserRate);
     }
 
-    private IEnumerator PlasmaPhase()
+    private void LookAtPlayer()
     {
-        yield return null;
-    }
-    private IEnumerator LaserPhase()
-    {
-        yield return null;
-    }
-    private IEnumerator MissilePhase()
-    {
-        yield return null;
+        CurrentRot = Vector3.Lerp(CurrentRot, (GlobalObjects.Player.transform.position - transform.position).normalized, LerpSpeed * Time.deltaTime);
+        transform.up = Quaternion.Euler(0, 0, LaserRate * TurretRotation) * CurrentRot;
     }
 }
