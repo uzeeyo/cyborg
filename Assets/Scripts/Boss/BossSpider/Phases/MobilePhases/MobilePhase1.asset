@@ -16,3 +16,4 @@ MonoBehaviour:
   AttackPhases:
   - {fileID: 11400000, guid: 2fd8c0e549606fa49bf7adb6cee35b31, type: 2}
   - {fileID: 11400000, guid: 8bb4935f9e6438546972129f33e2da7f, type: 2}
+  - {fileID: 11400000, guid: 899863e01dea2f8469e9c486578fd0bb, type: 2}
