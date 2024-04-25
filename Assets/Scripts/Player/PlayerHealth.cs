@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, I_TakeDamage
 {
+    private bool alive = true;
     [SerializeField] float DashInvincibleTime;
     private short DashCount;
     void Start()
     {
         EventHub.E_PlayerDash += PlayerDashed;
+        EventHub.E_EnergyEnded += Die;
     }
     private void OnDestroy()
     {
         EventHub.E_PlayerDash -= PlayerDashed;
+        EventHub.E_EnergyEnded -= Die;
     }
 
     private void PlayerDashed()
@@ -32,9 +35,16 @@ public class PlayerHealth : MonoBehaviour, I_TakeDamage
             return;
         TakeDamage(damage);
     }
-
+    private void Die()
+    {
+        alive = false;
+    }
     public void TakeDamage(float damage)
     {
-        EnergyManager.Instance.RemoveEnergy(damage);
+        if (alive)
+        {
+            EnergyManager.Instance.RemoveEnergy(damage);
+            EventHub.PlayerDamage();
+        }
     }
 }
