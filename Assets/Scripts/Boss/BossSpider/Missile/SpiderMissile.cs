@@ -17,6 +17,7 @@ public class SpiderMissile : MonoBehaviour
     [SerializeField] float GoDownratio ;
 
     [SerializeField] float MissileSpeed;
+    [SerializeField] Explosive explosive;
 
     public static short Count = 0;
 
@@ -88,6 +89,7 @@ public class SpiderMissile : MonoBehaviour
     }
     private void Explode()
     {
+        Instantiate(explosive, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     
