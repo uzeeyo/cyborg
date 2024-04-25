@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Explosive : MonoBehaviour
 {
-    [SerializeField] private ExplosiveData data;
+    [SerializeField] protected ExplosiveData data;
 
     private void Start()
     {
