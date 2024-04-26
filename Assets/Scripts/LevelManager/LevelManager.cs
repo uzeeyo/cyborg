@@ -3,7 +3,7 @@ public static class LevelManager
 {
     public static void OpenBossScene()
     {
-        SceneManager.LoadScene("BossLevel");
+        SceneManager.LoadScene("BossScene2");
     }
 
     public static void OpenMainScene()
@@ -13,7 +13,7 @@ public static class LevelManager
 
     public static void OpenStartMenu()
     {
-        //SceneManager.LoadScene("BossLevel");
+        SceneManager.LoadScene(0);
     }
     public static void ReloadScene()
     {

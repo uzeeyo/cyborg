@@ -25,7 +25,7 @@ public class BossPhaseManager : MonoBehaviour
 
     IEnumerator BossFight()
     {
-        yield return null;
+        yield return new WaitForSeconds(2);
         GoNextPhase();
         while(true)
         {
