@@ -13,7 +13,7 @@ public static class LevelManager
 
     public static void OpenStartMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
     }
     public static void ReloadScene()
     {
