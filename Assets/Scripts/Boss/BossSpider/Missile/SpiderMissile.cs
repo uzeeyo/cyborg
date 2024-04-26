@@ -18,6 +18,7 @@ public class SpiderMissile : MonoBehaviour
 
     [SerializeField] float MissileSpeed;
     [SerializeField] Explosive explosive;
+    [SerializeField] ExplodeEffect effect;
 
     public static short Count = 0;
 
@@ -90,6 +91,7 @@ public class SpiderMissile : MonoBehaviour
     private void Explode()
     {
         Instantiate(explosive, transform.position, Quaternion.identity);
+        ExplodeEffect effec = Instantiate(effect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     

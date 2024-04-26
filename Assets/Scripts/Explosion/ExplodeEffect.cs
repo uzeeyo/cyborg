@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExlplodeEffect : MonoBehaviour
+public class ExplodeEffect : MonoBehaviour
 {
     float rate = 1;
     public void SetRadius(float radius)
