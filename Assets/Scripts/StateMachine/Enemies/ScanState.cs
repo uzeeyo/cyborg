@@ -21,7 +21,7 @@ namespace Cyborg.StateMachine
         {
             base.Enter();
             _playerFinder = _enemy.GetComponent<PlayerFinder>();
-            _timeSinceScan = Time.time - _startTime;
+            _timeSinceScan = 0;
             _scanner = _enemy.GetComponentInChildren<Scanner>();
         }
 
@@ -33,7 +33,6 @@ namespace Cyborg.StateMachine
 
         public override void Tick()
         {
-            var timeElapsed = Time.time - _startTime;
             if (_scanAttempts > MAX_ATTEMPTS)
             {
                 _fsm.ChangeState(EnemyStateType.Idle);
@@ -56,7 +55,6 @@ namespace Cyborg.StateMachine
             if (Vector2.Distance(_enemy.transform.position, _player.transform.position) <= _scanner.CurrentRange)
             {
                 Debug.Log("Detected");
-                _enemy.PlayerLastSeenPosition = _player.transform.position;
                 _fsm.ChangeState(EnemyStateType.TravelToDetected);
             }
 

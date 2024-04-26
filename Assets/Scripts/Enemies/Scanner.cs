@@ -22,6 +22,7 @@ namespace Cyborg.Enemies
 
         public void Scan()
         {
+            CurrentRange = 0;
             _originalColor = _sprite.color;
             StartCoroutine(IncreaseRange());
         }
@@ -38,6 +39,7 @@ namespace Cyborg.Enemies
                 yield return null;
             }
             transform.localScale = Vector3.zero;
+            CurrentRange = 0;
         }
     }
 }

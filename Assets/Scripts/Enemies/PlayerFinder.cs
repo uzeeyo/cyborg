@@ -15,6 +15,7 @@ namespace Cyborg.Enemies
         private float _detectionRange;
         private float _fovAngle;
         private Enemy _enemy;
+        private Transform _player;
 
 
         [SerializeField] LayerMask _playerLayer;
@@ -48,6 +49,12 @@ namespace Cyborg.Enemies
 
             Handles.DrawLine(transform.position, transform.position + fovAngleA * _enemy.DetectionRange);
             Handles.DrawLine(transform.position, transform.position + fovAngleB * _enemy.DetectionRange);
+
+            if (_player != null)
+            {
+                Handles.color = Color.green;
+                Handles.DrawLine(_self.position, _player.position);
+            }
         }
 #endif
 
@@ -61,15 +68,18 @@ namespace Cyborg.Enemies
             {
                 var player = results[0].transform;
                 var directionToPlayer = (player.position - _self.position).normalized;
-                if (Vector3.Angle(_self.up, directionToPlayer) < _fovAngle)
+                if (Vector3.Angle(_self.up, directionToPlayer) < _fovAngle / 2)
                 {
+                    var distanceToPlayer = Vector3.Distance(_self.position, player.position);
 
-                    if (!Physics2D.Raycast(_self.position, directionToPlayer, _detectionRange, _obstacleLayer))
+                    if (!Physics2D.Raycast(_self.position, directionToPlayer, distanceToPlayer, _obstacleLayer))
                     {
+                        _player = player;
                         return true;
                     }
                 }
             }
+            _player = null;
             return false;
         }
     }

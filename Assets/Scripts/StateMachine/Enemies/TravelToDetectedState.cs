@@ -24,7 +24,8 @@ namespace Cyborg.StateMachine
             _agent = _enemy.GetComponent<NavMeshAgent>();
             _originalStoppingDistance = _agent.stoppingDistance;
             _agent.stoppingDistance = 0;
-            _agent.SetDestination(_enemy.PlayerLastSeenPosition);
+            _agent.updatePosition = false;
+            _agent.SetDestination(_player.transform.position);
 
             _playerFinder = _enemy.GetComponent<PlayerFinder>();
         }
@@ -33,6 +34,7 @@ namespace Cyborg.StateMachine
         {
             _agent.stoppingDistance = _originalStoppingDistance;
             _timeDestinationReached = null;
+            _agent.updatePosition = true;
         }
 
         public override void Tick()
@@ -43,14 +45,21 @@ namespace Cyborg.StateMachine
                 return;
             }
 
-            if (_agent.remainingDistance < 1f)
+            if (_agent.remainingDistance == 0)
             {
                 _timeDestinationReached ??= Time.time;
+                _enemy.transform.Rotate(0, 0, 2);
                 var timeSinceDestinationReached = Time.time - _timeDestinationReached;
                 if (timeSinceDestinationReached >= TIME_TO_SEARCH)
                 {
                     _fsm.ChangeState(EnemyStateType.Idle);
                 }
+            }
+            else
+            {
+                var direction = (_agent.nextPosition - _enemy.transform.position).normalized;
+                _enemy.transform.up = direction;
+                _enemy.transform.position = _agent.nextPosition;
             }
 
 

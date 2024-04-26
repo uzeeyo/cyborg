@@ -20,6 +20,7 @@ namespace Cyborg.StateMachine
             base.Enter();
             ResetRotation();
             _playerFinder = _enemy.GetComponent<PlayerFinder>();
+            _animator.Play("Idle");
         }
 
         public override void Exit()
@@ -31,7 +32,9 @@ namespace Cyborg.StateMachine
         {
             if (_playerFinder.PlayerIsVisible())
             {
+                _enemy.StatusIcon.Show(StatusIcon.IconType.Detect);
                 _fsm.ChangeState(EnemyStateType.Chase);
+                return;
             }
 
             float timeSinceLastRotate = Time.time - _startTime;

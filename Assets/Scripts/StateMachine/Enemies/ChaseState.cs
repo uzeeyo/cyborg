@@ -10,11 +10,14 @@ namespace Cyborg.StateMachine
 
         private float _timeSinceAttack = 0;
         private PlayerFinder _playerFinder;
+        private bool _facingPlayer;
 
         public override void Enter()
         {
-            _enemy.StatusIcon.Show(StatusIcon.IconType.Detect);
             _playerFinder = _enemy.GetComponent<PlayerFinder>();
+            _animator.Play("Move");
+            _enemy.transform.up = (_player.transform.position - _enemy.transform.position).normalized;
+            _timeSinceAttack = 0;
         }
 
         public override void Tick()
@@ -22,9 +25,8 @@ namespace Cyborg.StateMachine
             _timeSinceAttack += Time.deltaTime;
             if (_timeSinceAttack > _enemy.AttackSpeed)
             {
-                _fsm.ChangeState(EnemyStateType.Attack);
                 _timeSinceAttack = 0;
-                return;
+                _fsm.ChangeState(EnemyStateType.Attack);
             }
 
             if (_playerFinder.PlayerIsVisible())
