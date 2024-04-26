@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpiderLegHealth : MonoBehaviour,I_TakeDamage
+public class SpiderLegHealth : MonoBehaviour
 {
-    private float Health = 100;
-    public void TakeDamage(float damage)
+    [SerializeField] GameObject SpiderBrokenLegs;
+    public void EndBoss()
     {
-        Health -= damage;
-        if(Health < 0)
-            Brake();
+        SpiderBrokenLegs.SetActive(true);
     }
-
-    private void Brake()
+    IEnumerator SceneChange()
     {
-        
+        yield return new WaitForSeconds(7);
+        LevelManager.OpenStartMenu();
     }
 }

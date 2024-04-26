@@ -8,4 +8,8 @@ public static class LevelManager
     {
         SceneManager.LoadScene("BossLevel");
     }
+    public static void OpenStartMenu()
+    {
+        //SceneManager.LoadScene("BossLevel");
+    }
 }

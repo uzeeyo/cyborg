@@ -19865,7 +19865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1971148325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19878,12 +19878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47891a670a2c3854da05d8e3943e9084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stop: 0
-  Environment: 0
-  War: 0
-  Stop2: 0
-  LevelMusic: 0
-  damage: {fileID: 177349393}
 --- !u!4 &1971148326
 Transform:
   m_ObjectHideFlags: 0
