@@ -11,7 +11,7 @@ namespace Cyborg.Enemies
         private EnemyStateMachine _stateMachine;
         private NavMeshAgent _agent;
         private PlayerMovement _player;
-
+        public static short DeathCount = 0;
         [SerializeField] private float _health;
         [SerializeField] private float _movementSpeed;
         [SerializeField] private float _stoppingDistance;
@@ -73,6 +73,11 @@ namespace Cyborg.Enemies
         {
             _stateMachine.ChangeState(EnemyStateType.Die);
             EnemyDied?.Invoke(_enemyType);
+            DeathCount++;
+            if (DeathCount > 8)
+            {
+                LevelManager.OpenBossScene();
+            }
         }
     }
 }
