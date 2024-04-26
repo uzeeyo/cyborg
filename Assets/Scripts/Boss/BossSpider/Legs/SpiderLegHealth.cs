@@ -8,6 +8,7 @@ public class SpiderLegHealth : MonoBehaviour
     public void EndBoss()
     {
         SpiderBrokenLegs.SetActive(true);
+        StartCoroutine(SceneChange());
     }
     IEnumerator SceneChange()
     {
