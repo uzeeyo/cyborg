@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
 
 namespace Cyborg.Items
 {
@@ -18,13 +17,13 @@ namespace Cyborg.Items
 
         public virtual void Shoot()
         {
-            if (!IsAbleToFire()) 
+            if (!IsAbleToFire())
                 return;
 
             Vector2 direction = GetForwardDirection();
             Fire(direction);
             PlayOneShotSound();
-            
+
             BeginCoolDown();
         }
 
@@ -47,7 +46,7 @@ namespace Cyborg.Items
 
         protected bool IsAbleToFire()
         {
-            if(_onCooldown || !EnergyManager.Instance.TryToRemoveEnergy(_data.EnergyCost))
+            if (_onCooldown || !EnergyManager.Instance.TryToRemoveEnergy(_data.EnergyCost))
                 return false;
             return true;
         }
