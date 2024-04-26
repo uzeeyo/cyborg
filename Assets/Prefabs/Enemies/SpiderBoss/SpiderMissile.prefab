@@ -138,6 +138,7 @@ MonoBehaviour:
   GoDownratio: 2
   MissileSpeed: 5
   explosive: {fileID: 1165083549746762506, guid: 9c55e1dd980f8734693ed0a659ae9ca6, type: 3}
+  effect: {fileID: 8760957833756623488, guid: b34ef916274e28d4daf1ab5ac7d36a11, type: 3}
 --- !u!1 &8156011470751202197
 GameObject:
   m_ObjectHideFlags: 0

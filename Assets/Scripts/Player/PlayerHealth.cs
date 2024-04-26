@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, I_TakeDamage
 {
     private bool alive = true;
-    [SerializeField] float DashInvincibleTime;
+    float DashInvincibleTime = 0.5f;
     private short DashCount;
     void Start()
     {
