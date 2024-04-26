@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.VFX;
 
 namespace Cyborg.Enemies
 {
     public class BeamAttack : EnemyAttack
     {
-        private VisualEffect _hitEffect;
+        private ParticleSystem _hitEffect;
         private PlayerMovement _player;
+        private PlayerHealth _playerHealth;
         private Vector2 _targetPosition;
 
         [SerializeField] private float _shootTime;
@@ -17,8 +17,9 @@ namespace Cyborg.Enemies
 
         private void Awake()
         {
-            _hitEffect = GetComponentInChildren<VisualEffect>();
+            _hitEffect = GetComponentInChildren<ParticleSystem>();
             _player = FindObjectOfType<PlayerMovement>();
+            _playerHealth = _player.GetComponent<PlayerHealth>();
         }
 
         public override void Attack(Transform playerTranform)
@@ -47,10 +48,10 @@ namespace Cyborg.Enemies
             }
 
             _hitEffect.transform.position = _targetPosition;
-            _hitEffect.SendEvent("OnHit");
+            _hitEffect.Play();
             if (Vector2.Distance(_player.transform.position, _targetPosition) < _hitRadius)
             {
-                EnergyManager.Instance.RemoveEnergy(_damage);
+                _playerHealth.TakeDamage(_damage);
             }
 
 

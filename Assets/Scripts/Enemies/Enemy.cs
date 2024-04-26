@@ -50,7 +50,7 @@ namespace Cyborg.Enemies
 
         private void Update()
         {
-            if (Vector3.Distance(transform.position, _player.transform.position) > 40)
+            if (Vector3.Distance(transform.position, _player.transform.position) > 30)
             {
                 Destroy(gameObject);
             }

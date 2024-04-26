@@ -9,6 +9,7 @@ namespace Cyborg.Enemies
     {
         private Rigidbody2D _rb;
         private float _damage;
+        private PlayerHealth _playerHealth;
 
         [SerializeField] private HitEffect _hitVfx;
 
@@ -19,10 +20,11 @@ namespace Cyborg.Enemies
         }
 
 
-        public void Init(Vector2 velocity, float damage)
+        public void Init(Vector2 velocity, float damage, PlayerHealth playerHealth)
         {
             _rb.velocity = velocity;
             _damage = damage;
+            _playerHealth = playerHealth;
         }
 
         private IEnumerator DestroyAfterSeconds()
@@ -35,7 +37,7 @@ namespace Cyborg.Enemies
         {
             if (collision.gameObject.TryGetComponent(out PlayerMovement _))
             {
-                EnergyManager.Instance.RemoveEnergy(_damage);
+                _playerHealth.TakeDamage(_damage);
             }
 
             Instantiate(_hitVfx, transform.position, Quaternion.identity);

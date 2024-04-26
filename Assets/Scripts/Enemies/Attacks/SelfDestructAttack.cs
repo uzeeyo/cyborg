@@ -8,6 +8,7 @@ namespace Cyborg.Enemies
     public class SelfDestructAttack : EnemyAttack
     {
         private float _timeToComplete;
+        private PlayerHealth _playerHealth;
 
         [SerializeField] private float _blastRadius = 1;
         [SerializeField] private AnimationClip _animationClip;
@@ -16,6 +17,7 @@ namespace Cyborg.Enemies
         private void Awake()
         {
             _timeToComplete = _animationClip.length;
+            _playerHealth = FindObjectOfType<PlayerHealth>();
         }
 
         public override void Attack(Transform targetTransform)
@@ -34,7 +36,7 @@ namespace Cyborg.Enemies
             GetComponentInParent<Animator>().Play("Attack");
             if (Vector2.Distance(targetTransform.position, transform.position) < _blastRadius)
             {
-                EnergyManager.Instance.RemoveEnergy(_damage);
+                _playerHealth.TakeDamage(_damage);
             }
             StartCoroutine(DestroyAfterAnimation());
         }

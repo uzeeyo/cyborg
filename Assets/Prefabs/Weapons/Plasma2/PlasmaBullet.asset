@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 10
   <Damage>k__BackingField: 5
-  <hitEffect>k__BackingField: {fileID: 1063916859749532868, guid: 4c712898dbb3c3145a2843c7c63c9e65, type: 3}
+  <hitEffect>k__BackingField: {fileID: 3111373500570938189, guid: 4c712898dbb3c3145a2843c7c63c9e65, type: 3}
