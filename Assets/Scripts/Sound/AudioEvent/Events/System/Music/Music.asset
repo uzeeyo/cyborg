@@ -37,3 +37,11 @@ MonoBehaviour:
         Data3: 1988459392
         Data4: -1615322767
       Path: event:/Music/MainMenu
+  - e_Music: 4
+    reference:
+      Guid:
+        Data1: -2036936156
+        Data2: 1313707853
+        Data3: -1713372757
+        Data4: 883506963
+      Path: event:/Music/GameOver

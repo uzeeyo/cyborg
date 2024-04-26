@@ -3,8 +3,13 @@ using UnityEngine;
 public class LevelStartInput : MonoBehaviour
 {
     [SerializeField] E_InputMod StartMod;
+    [SerializeField] E_Music music = E_Music.stop;
+    [SerializeField] E_Ambiance ambiance = E_Ambiance.stop;
     void Start()
     {
+        EventHub.Ambiance(ambiance);
+        EventHub.Music(music);
+        EnergyManager.Instance.EnergyIsMax();
         switch (StartMod)
         {
             case E_InputMod.GamePlay:

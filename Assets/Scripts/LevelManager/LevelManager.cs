@@ -12,4 +12,9 @@ public static class LevelManager
     {
         //SceneManager.LoadScene("BossLevel");
     }
+    public static void ReloadScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
 }
