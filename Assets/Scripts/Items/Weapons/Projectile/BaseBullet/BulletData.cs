@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VFX;
 
 namespace Cyborg.Items
 {
@@ -12,6 +9,6 @@ namespace Cyborg.Items
 
         [field: SerializeField] public float Damage { get; private set; }
 
-        [field: SerializeField] public VisualEffect hitEffect { get; private set; }
+        [field: SerializeField] public ParticleSystem hitEffect { get; private set; }
     }
 }

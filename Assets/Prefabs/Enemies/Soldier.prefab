@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b7cc6a679b4f64ea01164a8c39b543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 10
   _blastRadius: 1
   _animationClip: {fileID: 7400000, guid: 36a58ff17df60e94eb79c40f8c602a24, type: 2}
   _lights:
@@ -717,7 +717,7 @@ MonoBehaviour:
   - {x: 0.12914886, y: -0.15937126, z: 0}
   m_ShapePathHash: -116394914
   m_Mesh: {fileID: 0}
-  m_InstanceId: 77744
+  m_InstanceId: 89852
   m_LocalBounds:
     m_Center: {x: -0.0037450492, y: 0.0055012405, z: 0}
     m_Extent: {x: 0.26157677, y: 0.16676852, z: 0}

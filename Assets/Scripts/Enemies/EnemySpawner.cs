@@ -14,7 +14,7 @@ namespace Cyborg.Enemies
 
     public class EnemySpawner : MonoBehaviour
     {
-        const int MAX_ENEMY_COUNT = 10;
+        const int MAX_ENEMY_COUNT = 15;
         private int _dynamicallySpawnedEnemyCount;
         private Dictionary<EnemyType, float> _spawnChanceMap;
         private PlayerMovement _player;
@@ -50,11 +50,11 @@ namespace Cyborg.Enemies
                 _ => Instantiate(_scout)
             };
 
-            var randomDistance = Random.Range(13, 18);
+            var randomDistance = Random.Range(15, 20);
             var randomPosition = Random.insideUnitSphere.normalized * randomDistance;
             var spawnPosition = _player.transform.position + new Vector3(randomPosition.x, randomPosition.y, 0);
 
-            enemy.transform.position = spawnPosition;
+            enemy.Agent.Warp(spawnPosition);
             enemy.EnemyDied += OnEnemyDied;
             _spawnChanceMap = _spawnChanceMap.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
             _dynamicallySpawnedEnemyCount++;
@@ -68,7 +68,7 @@ namespace Cyborg.Enemies
                 if (_dynamicallySpawnedEnemyCount < MAX_ENEMY_COUNT)
                 {
                     CreateEnemy(GetRandomEnemyType());
-                    timeToWait = Random.Range(1, 8);
+                    timeToWait = Random.Range(1, 4);
                     yield return new WaitForSeconds(timeToWait);
                 }
                 yield return null;
