@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2db933f3fb382b45a18dfcaf27366b2, type: 3}
-  m_Name: TestPhase
+  m_Name: DieExplosion
   m_EditorClassIdentifier: 
   spiderTurret: {fileID: 0}
   AttackPhases:
-  - {fileID: 11400000, guid: b2da896c6806865498cf90894e6e5f72, type: 2}
+  - {fileID: 11400000, guid: 5f8748f7ed55e1c47bd73109ae1b6f1c, type: 2}

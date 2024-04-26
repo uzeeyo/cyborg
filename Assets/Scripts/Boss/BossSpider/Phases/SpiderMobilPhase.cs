@@ -29,7 +29,7 @@ public class SpiderMobilPhase : BossPhase
 
     public override void Tick()
     {
-        
+        AttackPhases[CurrentPhase].Tick();
     }
     private void PhaseEnded()
     {
