@@ -7,6 +7,7 @@ public class LevelStartInput : MonoBehaviour
     [SerializeField] E_Ambiance ambiance = E_Ambiance.stop;
     void Start()
     {
+        int a = 3;
         EventHub.Ambiance(ambiance);
         EventHub.Music(music);
         EnergyManager.Instance.EnergyIsMax();
