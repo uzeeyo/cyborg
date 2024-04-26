@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4903f92533224c844a088c32c3969393, type: 3}
+  m_Name: BeforeBoss
+  m_EditorClassIdentifier: 
+  _lines:
+  - "Our robot finds himself in front of the largest enemy he has ever encountered\u2026 "
+  - A giant Spider bot!
+  - "Its ominous red eyes locked onto you like those of a predator that found its
+    prey\u2026 Your biggest challenge yet. "
