@@ -56,6 +56,10 @@ public class EnergyManager
     {
         EventHub.EnergyEnded();
     }
+    public void EnergyIsMax()
+    {
+        model.Electricity = model.MaxElectricity;
+    }
     public void SetMaxElectricity(double maxElectricity)
     {
         model.MaxElectricity = maxElectricity;
