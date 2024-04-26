@@ -8,7 +8,7 @@ namespace Cyborg.Items
 
         private void Start()
         {
-            DestroyAfterTime();
+            StartCoroutine(DestroyAfterTime());
         }
         public override void SetDirection(Vector2 direction)
         {
@@ -26,6 +26,6 @@ namespace Cyborg.Items
         {
             Instantiate(bulletData.hitEffect, transform.position, transform.rotation);
         }
- 
+
     }
 }

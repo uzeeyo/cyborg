@@ -1,4 +1,3 @@
-using Cyborg.Items;
 using Cyborg.StateMachine;
 using System;
 using UnityEngine;
@@ -24,14 +23,12 @@ namespace Cyborg.Enemies
         [SerializeField] private SpriteRenderer _scannerSprite;
 
         public NavMeshAgent Agent => _agent;
-        public float MovementSpeed => _movementSpeed;
         public float DetectionRange => _detectionRange;
         public float AttackSpeed => _attackSpeed;
         public float Fov => _fov;
         public StatusIcon StatusIcon { get; private set; }
         public event Action<EnemyType> EnemyDied;
         public SpriteRenderer ScannerSprite => _scannerSprite;
-        public Vector2 PlayerLastSeenPosition { get; set; }
 
         private void Awake()
         {
@@ -62,6 +59,8 @@ namespace Cyborg.Enemies
         public void TakeDamage(float damage)
         {
             if (_stateMachine.CurrentState == EnemyStateType.Die) return;
+
+            _stateMachine.ChangeState(EnemyStateType.TravelToDetected);
 
             _health -= damage;
             if (_health <= 0)

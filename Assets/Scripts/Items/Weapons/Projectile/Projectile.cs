@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.VFX;
 
 namespace Cyborg.Items
 {
@@ -12,11 +11,7 @@ namespace Cyborg.Items
             GetComponent<Rigidbody2D>().velocity = velocity;
         }
 
-        public virtual void SetDirection(Vector2 direction)
-        {
-
-        }
-      
+        public abstract void SetDirection(Vector2 direction);
 
         protected IEnumerator DestroyAfterTime()
         {
