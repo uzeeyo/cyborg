@@ -505,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4255446d5b98b46a9495dedc541d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 0
   _projectilePrefab: {fileID: 254013513369316412, guid: ab5cc5cbcdcf4574fa351fa676f7cde8, type: 3}
   _projectileSpeed: 8
 --- !u!1 &8537634282905054021
@@ -524,6 +525,7 @@ GameObject:
   - component: {fileID: 6861656242319389013}
   - component: {fileID: -8429412118192111525}
   - component: {fileID: 9064164444175893657}
+  - component: {fileID: -5609667698159855995}
   m_Layer: 10
   m_Name: Scout
   m_TagString: Untagged
@@ -762,3 +764,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5609667698159855995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8537634282905054021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d933a73900beea247a045e5876bfd4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _batterySPrefab: {fileID: 7379182029808992521, guid: c8371a49efd103a41bca2bec615bb7d7, type: 3}
+  _batteryMPrefab: {fileID: 2826317716163180858, guid: 8fd06f8d82bcc6f46b115be6c94c3a9b, type: 3}
+  _batteryLPrefab: {fileID: 2826317716163180858, guid: c97983d2e5059c54c91a2d56ce7bec42, type: 3}
