@@ -1,3 +1,4 @@
+using Cyborg.Enemies;
 using System;
 using UnityEngine;
 
@@ -31,7 +32,10 @@ namespace Cyborg.Dialog
 
         private void Start()
         {
-            Show(_openingDialog);
+            Show(_openingDialog, () =>
+            {
+                FindObjectOfType<EnemySpawner>().enabled = true;
+            });
         }
 
         public void Show(Dialog dialog, Action action = null)
