@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Explosive : MonoBehaviour
 {
-    [SerializeField] private ExplosiveData data;
+    [SerializeField] protected ExplosiveData data;
 
     private void Start()
     {
@@ -28,6 +28,7 @@ public class Explosive : MonoBehaviour
         {
             damagable.TakeDamage(data.Damage);
         }
+        PlaySound();
         Destroy(gameObject);
     }
 
@@ -45,5 +46,10 @@ public class Explosive : MonoBehaviour
             }
         }
         return damagables.ToArray();
+    }
+
+    protected void PlaySound()
+    {
+        EventHub.Explosion();
     }
 }

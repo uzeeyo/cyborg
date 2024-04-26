@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6130507785f14514a9d5174926783859, type: 3}
+  m_Name: Death2
+  m_EditorClassIdentifier: 
+  effect: {fileID: 8760957833756623488, guid: b34ef916274e28d4daf1ab5ac7d36a11, type: 3}
+  Strength: 2
+  MaxAmmo: 2

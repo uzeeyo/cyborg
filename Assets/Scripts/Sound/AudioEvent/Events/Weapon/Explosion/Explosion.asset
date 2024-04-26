@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4ff1c6a91f13d4a8c410884a382c5d, type: 3}
+  m_Name: Explosion
+  m_EditorClassIdentifier: 
+  refe:
+    Guid:
+      Data1: -1750211508
+      Data2: 1074163533
+      Data3: 578185891
+      Data4: -2112015199
+    Path: event:/SFX/Foley/Explosive weapon hit

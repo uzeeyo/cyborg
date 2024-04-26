@@ -150,6 +150,22 @@ public static class EventHub
     }
     #endregion
 
+    #region Explosion
+    public static event Action E_Explosion;
 
+    public static void Explosion()
+    {
+        E_Explosion?.Invoke();
+    }
+    #endregion
+
+    #region PlayerDamage
+    public static event Action E_PlayerDamage;
+
+    public static void PlayerDamage()
+    {
+        E_PlayerDamage?.Invoke();
+    }
+    #endregion
 
 }
