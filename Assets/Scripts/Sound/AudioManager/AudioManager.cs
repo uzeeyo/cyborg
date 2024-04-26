@@ -14,12 +14,12 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SetaE_Events();
             
         }
     }
     void Start()
     {
-        SetaE_Events();
     }
 
     private void SetaE_Events()
