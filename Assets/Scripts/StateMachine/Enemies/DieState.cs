@@ -25,6 +25,7 @@ namespace Cyborg.StateMachine
             var aniState = _animator.GetCurrentAnimatorStateInfo(0);
             if (aniState.IsName("Die") && Time.time - _startTime > aniState.length)
             {
+                _enemy.GetComponent<BatteryDropper>().DropBattery();
                 GameObject.Destroy(_enemy.gameObject);
             }
         }

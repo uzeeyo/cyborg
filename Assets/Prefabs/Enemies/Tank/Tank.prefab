@@ -811,6 +811,7 @@ GameObject:
   - component: {fileID: -8313464127979264933}
   - component: {fileID: 2487940115978587566}
   - component: {fileID: 2072069944323713702}
+  - component: {fileID: 1477294882905109815}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -1051,6 +1052,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1477294882905109815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8537634282905054021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d933a73900beea247a045e5876bfd4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _batterySPrefab: {fileID: 7379182029808992521, guid: c8371a49efd103a41bca2bec615bb7d7, type: 3}
+  _batteryMPrefab: {fileID: 2826317716163180858, guid: 8fd06f8d82bcc6f46b115be6c94c3a9b, type: 3}
+  _batteryLPrefab: {fileID: 2826317716163180858, guid: c97983d2e5059c54c91a2d56ce7bec42, type: 3}
 --- !u!1 &8662183703854075491
 GameObject:
   m_ObjectHideFlags: 0
