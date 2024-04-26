@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2db933f3fb382b45a18dfcaf27366b2, type: 3}
-  m_Name: TestPhase
+  m_Name: LowDamage
   m_EditorClassIdentifier: 
   spiderTurret: {fileID: 0}
   AttackPhases:

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2db933f3fb382b45a18dfcaf27366b2, type: 3}
-  m_Name: TestPhase
+  m_Script: {fileID: 11500000, guid: 6130507785f14514a9d5174926783859, type: 3}
+  m_Name: ExplodeSimple
   m_EditorClassIdentifier: 
-  spiderTurret: {fileID: 0}
-  AttackPhases:
-  - {fileID: 11400000, guid: b2da896c6806865498cf90894e6e5f72, type: 2}
+  effect: {fileID: 8760957833756623488, guid: b34ef916274e28d4daf1ab5ac7d36a11, type: 3}
+  Strength: 0.4
+  MaxAmmo: 7
