@@ -1469,6 +1469,7 @@ GameObject:
   - component: {fileID: 152180833}
   - component: {fileID: 152180832}
   - component: {fileID: 152180831}
+  - component: {fileID: 152180834}
   m_Layer: 0
   m_Name: NavMesh
   m_TagString: Untagged
@@ -1504,7 +1505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04976799df50f54ba128eff723155a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -334000983
+  m_AgentTypeID: -1372625422
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -1518,7 +1519,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.06666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: c0424ac3b27c4dc4c9fbde6e750a4d4a, type: 2}
@@ -1537,6 +1538,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &152180834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152180830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: -334000983
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.33333334
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: ff47ff54bc1c4ee4da2f40636f472b5d, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!43 &167655781
 Mesh:
   m_ObjectHideFlags: 0
@@ -110874,7 +110906,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367382173}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b63ac7e005ff224cae738b9022ca458, type: 3}
   m_Name: 
@@ -123772,13 +123804,13 @@ SceneRoots:
   m_Roots:
   - {fileID: 1100089310}
   - {fileID: 519420032}
+  - {fileID: 152180833}
   - {fileID: 102786965}
   - {fileID: 1587900656}
   - {fileID: 914612104}
   - {fileID: 1087929598}
   - {fileID: 1644867600}
   - {fileID: 112360015}
-  - {fileID: 152180833}
   - {fileID: 1367382175}
   - {fileID: 1765063687}
   - {fileID: 168298104}
