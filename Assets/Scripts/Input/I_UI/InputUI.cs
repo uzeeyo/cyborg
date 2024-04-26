@@ -42,6 +42,7 @@ public class InputUI : Inputs.IUIActions
 
     public Action E_Esc;
     public Action E_Cancel;
+    public Action E_Continue;
 
     #endregion
     void Inputs.IUIActions.OnEsc(InputAction.CallbackContext context)
@@ -54,5 +55,11 @@ public class InputUI : Inputs.IUIActions
     {
         if (context.phase == InputActionPhase.Performed)
             E_Cancel?.Invoke();
+    }
+
+    public void OnContinue(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            E_Continue?.Invoke();
     }
 }
